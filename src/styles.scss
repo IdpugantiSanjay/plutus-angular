@@ -2,3 +2,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  [type='text'],
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    @apply w-full border-gray-300 rounded-lg focus:border-teal-500 focus:ring-teal-500
+  }
+
+  /*[type='text']:invalid,*/
+  /*[type='email']:invalid,*/
+  /*[type='url']:invalid,*/
+  /*[type='password']:invalid,*/
+  /*[type='number']:invalid,*/
+  /*[type='date']:invalid,*/
+  /*[type='datetime-local']:invalid,*/
+  /*[type='month']:invalid,*/
+  /*[type='search']:invalid,*/
+  /*[type='tel']:invalid,*/
+  /*[type='time']:invalid,*/
+  /*[type='week']:invalid,*/
+  /*[multiple]:invalid,*/
+  /*textarea:invalid,*/
+  /*select:invalid {*/
+  /*    @apply w-full border-pink-500 focus:border-pink-500 focus:ring-pink-500*/
+  /*}*/
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.input-invalid {
+  @apply border-red-500 border-2  focus:border-red-600 focus:ring-red-900
+}
+
+.btn {
+  @apply font-bold py-2 px-4 rounded-lg focus:ring-2 focus:ring-offset-1;
+}
+
+
+.btn:disabled {
+  opacity: 40%;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  @apply bg-teal-700 text-white focus:outline-none focus:ring-teal-500;
+}
+
+.btn-primary:hover:not(:disabled) {
+  @apply bg-teal-600;
+}
+
+
+.btn-secondary {
+  @apply text-red-600 focus:outline-none focus:ring-red-600;
+}
+
+.btn-secondary:hover {
+  @apply text-red-600;
+}
