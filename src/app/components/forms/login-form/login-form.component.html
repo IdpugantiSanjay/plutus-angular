@@ -1,0 +1,27 @@
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+  <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+    <form class="mb-0 space-y-6" [formGroup]="form">
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <div class="mt-1">
+          <input id="username" name="username" type="text" required autofocus formControlName="username" />
+        </div>
+        <div
+          class="text-red-500   text-sm ease-out duration-150 transition-opacity">
+        </div>
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <div class="mt-1">
+          <input id="password" name="password" type="password" required formControlName="password"/>
+        </div>
+        <div
+          class="text-red-500   text-sm ease-out duration-150 transition-opacity">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-full flex justify-center" (click)="onLogin()"
+              [disabled]="!form.valid">Login
+      </button>
+    </form>
+  </div>
+</div>
