@@ -1,6 +1,4 @@
 import { Component } from '@angular/core'
-import { FormControl, FormGroup } from '@angular/forms'
-import { FormGroupTyped } from '../TypedForms'
 
 @Component({
   selector: 'app-root',
@@ -9,8 +7,7 @@ import { FormGroupTyped } from '../TypedForms'
 })
 export class AppComponent {
   title = 'plutus-web-experimental'
-
-  form = new FormGroup({ amount: new FormControl(0) }) as FormGroupTyped<{ amount: number }>
-
   constructor() {}
+
+  submit() {}
 }

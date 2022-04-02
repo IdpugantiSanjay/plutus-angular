@@ -1,7 +1,1 @@
-{
-  "arrowParens": "always",
-  "singleQuote": true,
-  "tabWidth": 2,
-  "semi": false,
-  "printWidth": 120
-}
+{ "arrowParens": "always", "singleQuote": true, "tabWidth": 2, "semi": false, "printWidth": 120 }
