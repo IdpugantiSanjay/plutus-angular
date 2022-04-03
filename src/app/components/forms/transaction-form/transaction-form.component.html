@@ -1,130 +1,155 @@
 <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
   <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-    <form class="mb-0 space-y-6" [formGroup]="form">
-      <div>
-        <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-        <div class="mt-1">
-          <input id="amount" type="number" required min="1" autofocus formControlName="amount" />
+    <form class="mb-0" [formGroup]="form">
+      <fieldset class="space-y-6" [disabled]="disabled">
+        <div>
+          <label for="amount">
+            Amount
+            <div class="mt-1">
+              <input id="amount" type="number" required min="1" autofocus formControlName="amount" />
+            </div>
+          </label>
         </div>
-      </div>
 
-      <div>
-        <div class="mt-1">
-          <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-          <select name="category" id="category" required formControlName="category">
-            <option value="Food Order">Food Order</option>
-            <option value="Drinks">Drinks</option>
-            <option value="Entertainment">Entertainment</option>
-          </select>
-        </div>
-        <div class="text-red-500 text-sm ease-out duration-150 transition-opacity"></div>
-      </div>
-
-      <div>
-        <label for="date" class="block text-sm font-medium text-gray-700">Date & Time</label>
-        <div class="mt-1 flex gap-1">
-          <div class="flex-1 w-4/6">
-            <input id="date" name="date" type="date" required formControlName="date" />
-          </div>
-          <div class="w-2/6">
-            <input id="time" name="time" type="time" required formControlName="time" />
+        <div>
+          <div class="mt-1">
+            <label for="category">
+              Category
+              <select name="category" id="category" required formControlName="category">
+                <option disabled value="">Please select a category</option>
+                <option value="Food Order">Food Order</option>
+                <option value="Drinks">Drinks</option>
+                <option value="Entertainment">Entertainment</option>
+              </select>
+            </label>
           </div>
         </div>
-      </div>
 
-      <!--      <div>-->
-      <!--        <label for="bill-name" class="block text-sm font-medium text-gray-700">Name</label>-->
-      <!--        <div class="mt-1">-->
-      <!--          <input id="bill-name" name="bill-name" type="text" />-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <label for="replacement" class="block text-sm font-medium text-gray-700"-->
-      <!--          >Replacement / Return Period in Days</label-->
-      <!--        >-->
-      <!--        <div class="mt-1">-->
-      <!--          <input id="replacement" name="replacement" type="number" required min="0" />-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <label for="warranty" class="block text-sm font-medium text-gray-700">Warranty Period</label>-->
-      <!--        <div class="mt-1 flex gap-4">-->
-      <!--          <div class="flex-1">-->
-      <!--            <input id="warranty" name="warranty" type="number" required min="0" />-->
-      <!--          </div>-->
-      <!--          <div>-->
-      <!--            <select name="warrantyPeriod" id="period" required>-->
-      <!--              <option value="years">Years</option>-->
-      <!--              <option value="months">Months</option>-->
-      <!--              <option value="days">Days</option>-->
-      <!--            </select>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <label for="restaurant" class="block text-sm font-medium text-gray-700">Restaurant</label>-->
-      <!--        <div class="mt-1 flex gap-4">-->
-      <!--          <div class="flex-1">-->
-      <!--            <input id="restaurant" name="restaurant" type="text" required min="0" />-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <div class="mt-1 flex gap-4">-->
-      <!--          <div class="flex-1">-->
-      <!--            &lt;!&ndash;            <ComboBox :value="props.modelValue.mutualFund.name" label="Mutual Fund" :options="mutualFunds"&ndash;&gt;-->
-      <!--            &lt;!&ndash;                      @change="props.modelValue.mutualFund.name = $event" :disabled="props.readonly"/>&ndash;&gt;-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--      <div class="mt-1">-->
-      <!--        <label for="units" class="block text-sm font-medium text-gray-700">Units</label>-->
-      <!--        <input id="units" name="units" type="number" min="1" required />-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <label for="dish" class="block text-sm font-medium text-gray-700">Dish</label>-->
-      <!--        <div class="mt-1 flex gap-4">-->
-      <!--          <div class="flex-1">-->
-      <!--            <input id="dish" name="dish" type="text" required />-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--        <div class="text-red-500 text-sm ease-out duration-150 transition-opacity"></div>-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <label class="block text-sm font-medium text-gray-700">Rating</label>-->
-      <!--        <div class="mt-1 flex gap-4 mb-2">-->
-      <!--          &lt;!&ndash;          <Rating v-model="props.modelValue.foodOrder.rating" :count="5"&ndash;&gt;-->
-      <!--          &lt;!&ndash;                  :disabled="props.readonly"/>&ndash;&gt;-->
-      <!--        </div>-->
-      <!--        <div class="text-red-500 text-sm ease-out duration-150 transition-opacity h-2"></div>-->
-      <!--      </div>-->
-
-      <!--      <div>-->
-      <!--        <label for="transferTo" class="block text-sm font-medium text-gray-700">Transferred To</label>-->
-      <!--        <div class="mt-1 flex gap-4">-->
-      <!--          <div class="flex-1">-->
-      <!--            <input id="transferTo" name="warranty" type="text" required />-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <div>
-        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-        <div class="mt-1">
-          <textarea id="description" formControlName="description"></textarea>
+        <div>
+          <label for="date"
+            >Date & Time
+            <div class="mt-1 flex gap-1">
+              <div class="flex-1 w-4/6">
+                <input id="date" name="date" type="date" required formControlName="date" />
+              </div>
+              <div class="w-2/6">
+                <input id="time" name="time" type="time" required formControlName="time" />
+              </div>
+            </div>
+          </label>
         </div>
-      </div>
 
-      <button [disabled]="!form.valid" (click)="onSubmit()" class="btn btn-primary w-full flex justify-center">
-        Save
-      </button>
+        <ng-container *ngIf="category$ | async as category">
+          <div *ngIf="category == 'Food Order' && form.get('foodOrder')" formGroupName="foodOrder" class="space-y-6">
+              <ng-container>
+                <div *ngIf="form.get('foodOrder.restaurant')">
+                  <label for="restaurant">
+                    Restaurant
+                    <div class="mt-1 flex gap-4">
+                      <div class="flex-1">
+                        <input
+                          id="restaurant"
+                          name="restaurant"
+                          type="text"
+                          required
+                          min="0"
+                          formControlName="restaurant" />
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
+                <div *ngIf="form.get('foodOrder.dish')">
+                  <label for="dish"
+                    >Dish
+                    <div class="mt-1 flex gap-4">
+                      <div class="flex-1">
+                        <input id="dish" name="dish" type="text" required formControlName="dish" />
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
+                <div *ngIf="form.get('foodOrder.rating')">
+                  <label
+                    >Rating
+                    <div class="mt-1 flex gap-4 mb-2">
+                      <plutus-rating [props]="{ starSize: 30, count: 5 }" formControlName="rating"></plutus-rating>
+                    </div>
+                  </label>
+                </div>
+              </ng-container>
+            </div>
+        </ng-container>
+
+        <div>
+          <label for="description">
+            Description
+            <div class="mt-1">
+              <textarea id="description" formControlName="description"></textarea>
+            </div>
+          </label>
+        </div>
+
+        <button [disabled]="!form.valid" (click)="onSubmit()" class="btn btn-primary w-full flex justify-center">
+          Save
+        </button>
+      </fieldset>
     </form>
   </div>
 </div>
+
+<!--      <div>-->
+<!--        <label for="bill-name">Name</label>-->
+<!--        <div class="mt-1">-->
+<!--          <input id="bill-name" name="bill-name" type="text" />-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <label for="replacement"-->
+<!--          >Replacement / Return Period in Days</label-->
+<!--        >-->
+<!--        <div class="mt-1">-->
+<!--          <input id="replacement" name="replacement" type="number" required min="0" />-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <label for="warranty">Warranty Period</label>-->
+<!--        <div class="mt-1 flex gap-4">-->
+<!--          <div class="flex-1">-->
+<!--            <input id="warranty" name="warranty" type="number" required min="0" />-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <select name="warrantyPeriod" id="period" required>-->
+<!--              <option value="years">Years</option>-->
+<!--              <option value="months">Months</option>-->
+<!--              <option value="days">Days</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <div class="mt-1 flex gap-4">-->
+<!--          <div class="flex-1">-->
+<!--            &lt;!&ndash;            <ComboBox :value="props.modelValue.mutualFund.name" label="Mutual Fund" :options="mutualFunds"&ndash;&gt;-->
+<!--            &lt;!&ndash;                      @change="props.modelValue.mutualFund.name = $event" :disabled="props.readonly"/>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="mt-1">-->
+<!--        <label for="units">Units</label>-->
+<!--        <input id="units" name="units" type="number" min="1" required />-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <label for="transferTo">Transferred To</label>-->
+<!--        <div class="mt-1 flex gap-4">-->
+<!--          <div class="flex-1">-->
+<!--            <input id="transferTo" name="warranty" type="text" required />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->

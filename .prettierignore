@@ -1,3 +1,6 @@
 .angular
 .vscode
 node_modules
+e2e
+build
+coverage

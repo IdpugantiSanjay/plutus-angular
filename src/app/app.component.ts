@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { TransactionForm } from './types/TransactionForm'
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,7 @@ export class AppComponent {
   title = 'plutus-web-experimental'
   constructor() {}
 
-  submit() {}
+  submit(form: TransactionForm) {
+    console.log(form)
+  }
 }
