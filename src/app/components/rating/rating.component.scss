@@ -1,0 +1,15 @@
+@media (hover: hover) and (pointer: fine) {
+  .star {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .star:focus {
+    transform: scale(1.5);
+  }
+
+  .star:hover {
+    transform: scale(1.5) rotate(-12deg);
+  }
+}
