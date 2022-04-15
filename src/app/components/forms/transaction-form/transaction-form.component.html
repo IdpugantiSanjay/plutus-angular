@@ -1,101 +1,14 @@
 <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
   <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-    <form class="mb-0" [formGroup]="form">
-      <fieldset class="space-y-6" [disabled]="disabled">
-        <div>
-          <label for="amount">
-            Amount
-            <div class="mt-1">
-              <input id="amount" type="number" required min="1" autofocus formControlName="amount" />
-            </div>
-          </label>
-        </div>
+    <plutus-transaction-common-props-form [parent]="parent" *ngIf="show === 'COMMON'"
+                                          (onSubmit)="saveEvent.emit($event)"
+                                          (next)="showFoodForm()">
+    </plutus-transaction-common-props-form>
 
-        <div>
-          <div class="mt-1">
-            <label for="category">
-              Category
-              <select name="category" id="category" required formControlName="category">
-                <option disabled value="">Please select a category</option>
-                <option value="Food Order">Food Order</option>
-                <option value="Drinks">Drinks</option>
-                <option value="Entertainment">Entertainment</option>
-              </select>
-            </label>
-          </div>
-        </div>
+    <ng-container *ngIf="show === 'FOOD'">
+      <plutus-food-order-form [parent]="foodOrderForm" (back)="showCommonForm()" (save)="foodOrderSubmit($event)"></plutus-food-order-form>
+    </ng-container>
 
-        <div>
-          <label for="date"
-            >Date & Time
-            <div class="mt-1 flex gap-1">
-              <div class="flex-1 w-4/6">
-                <input id="date" name="date" type="date" required formControlName="date" />
-              </div>
-              <div class="w-2/6">
-                <input id="time" name="time" type="time" required formControlName="time" />
-              </div>
-            </div>
-          </label>
-        </div>
-
-        <ng-container *ngIf="category$ | async as category">
-          <div *ngIf="category == 'Food Order' && form.get('foodOrder')" formGroupName="foodOrder" class="space-y-6">
-              <ng-container>
-                <div *ngIf="form.get('foodOrder.restaurant')">
-                  <label for="restaurant">
-                    Restaurant
-                    <div class="mt-1 flex gap-4">
-                      <div class="flex-1">
-                        <input
-                          id="restaurant"
-                          name="restaurant"
-                          type="text"
-                          required
-                          min="0"
-                          formControlName="restaurant" />
-                      </div>
-                    </div>
-                  </label>
-                </div>
-
-                <div *ngIf="form.get('foodOrder.dish')">
-                  <label for="dish"
-                    >Dish
-                    <div class="mt-1 flex gap-4">
-                      <div class="flex-1">
-                        <input id="dish" name="dish" type="text" required formControlName="dish" />
-                      </div>
-                    </div>
-                  </label>
-                </div>
-
-                <div *ngIf="form.get('foodOrder.rating')">
-                  <label
-                    >Rating
-                    <div class="mt-1 flex gap-4 mb-2">
-                      <plutus-rating [props]="{ starSize: 30, count: 5 }" formControlName="rating"></plutus-rating>
-                    </div>
-                  </label>
-                </div>
-              </ng-container>
-            </div>
-        </ng-container>
-
-        <div>
-          <label for="description">
-            Description
-            <div class="mt-1">
-              <textarea id="description" formControlName="description"></textarea>
-            </div>
-          </label>
-        </div>
-
-        <button [disabled]="!form.valid" (click)="onSubmit()" class="btn btn-primary w-full flex justify-center">
-          Save
-        </button>
-      </fieldset>
-    </form>
   </div>
 </div>
 

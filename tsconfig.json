@@ -17,6 +17,10 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
     "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {

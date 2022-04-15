@@ -1,7 +1,7 @@
 import { Attribute, Component, forwardRef, Input, OnInit } from '@angular/core'
 import { RatingProps } from './types'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
-import {range} from "../../functions/range";
+import { range } from '../../functions/range'
 
 @Component({
   selector: 'plutus-rating',
@@ -19,7 +19,6 @@ export class RatingComponent implements OnInit, ControlValueAccessor {
   @Input('props') props: RatingProps = { count: 5, starSize: 30 }
   public rating: number = 0
   public count: number[] = []
-
 
   onChange!: Function
 

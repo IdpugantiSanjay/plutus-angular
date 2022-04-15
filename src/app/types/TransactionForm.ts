@@ -2,13 +2,18 @@ export type TransactionForm = {
   category: string
   amount: number
   description: string
-  date: string
-  time: string
-  foodOrder?: FoodOrder
+  dateTime: Date
+  foodOrder?: FoodOrderForm
 }
 
-export type FoodOrder = {
+export type FoodOrderForm = {
   rating: number
   dish: string
   restaurant: string
+}
+
+export type TransactionFormButtonState = {
+  name: 'Save' | 'Next'
+  type: 'submit' | 'button'
+  isDisabled: boolean
 }

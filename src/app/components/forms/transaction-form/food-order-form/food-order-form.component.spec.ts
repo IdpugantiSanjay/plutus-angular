@@ -1,18 +1,20 @@
-import { LoginFormComponent } from './login-form.component'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+
+import { FoodOrderFormComponent } from './food-order-form.component'
+import {RatingComponent} from "../../../rating/rating.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
-describe('LoginFormComponent', () => {
-  let component: LoginFormComponent
-  let fixture: ComponentFixture<LoginFormComponent>
+describe('FoodOrderFormComponent', () => {
+  let component: FoodOrderFormComponent
+  let fixture: ComponentFixture<FoodOrderFormComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoginFormComponent],
+      declarations: [FoodOrderFormComponent, RatingComponent],
       imports: [ReactiveFormsModule]
     }).compileComponents()
 
-    fixture = TestBed.createComponent(LoginFormComponent)
+    fixture = TestBed.createComponent(FoodOrderFormComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
