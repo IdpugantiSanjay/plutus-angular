@@ -14,6 +14,8 @@ import { BehaviorSubject } from 'rxjs'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FoodOrderFormComponent } from './components/forms/transaction-form/food-order-form/food-order-form.component'
 import { TransactionCommonPropsFormComponent } from './components/forms/transaction-form/transaction-common-props-form/transaction-common-props-form.component'
+import { ButtonDirective } from './directories/button.directive';
+import { CreateExpenseComponent } from './views/create-expense/create-expense.component'
 
 const API_BASE_URL_TOKEN = new InjectionToken<string>('Base API TOKEN')
 export const TRANSACTIONS_URL_TOKEN = new InjectionToken<string>('Transactions API Token')
@@ -28,6 +30,8 @@ const USERNAME_TOKEN = new InjectionToken<BehaviorSubject<string>>('User Info To
     RatingComponent,
     FoodOrderFormComponent,
     TransactionCommonPropsFormComponent,
+    ButtonDirective,
+    CreateExpenseComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule],
   bootstrap: [AppComponent],

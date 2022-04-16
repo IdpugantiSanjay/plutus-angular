@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { TransactionCommonPropsFormComponent } from './transaction-common-props-form.component'
-import {FormBuilder, FormControl, ReactiveFormsModule} from "@angular/forms";
-import {FormGroupTyped} from "../../../../../TypedForms";
-import {TransactionForm} from "../../../../types/TransactionForm";
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
+import { FormGroupTyped } from '../../../../../TypedForms'
+import { TransactionForm } from '../../../../types/TransactionForm'
 
 describe('TransactionCommonPropsFormComponent', () => {
   let component: TransactionCommonPropsFormComponent
@@ -13,13 +13,13 @@ describe('TransactionCommonPropsFormComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [TransactionCommonPropsFormComponent],
       imports: [ReactiveFormsModule],
-      providers: [FormBuilder]
+      providers: [FormBuilder],
     }).compileComponents()
 
     fixture = TestBed.createComponent(TransactionCommonPropsFormComponent)
     component = fixture.componentInstance
 
-    const fb = new FormBuilder();
+    const fb = new FormBuilder()
     component.parent = fb.group({
       category: new FormControl(),
       description: new FormControl(),

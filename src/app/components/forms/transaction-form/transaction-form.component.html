@@ -1,14 +1,21 @@
-<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+<div class="mt-8 mx-auto sm:max-w-md max-w-sm">
   <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-    <plutus-transaction-common-props-form [parent]="parent" *ngIf="show === 'COMMON'"
-                                          (onSubmit)="saveEvent.emit($event)"
-                                          (next)="showFoodForm()">
+    <plutus-transaction-common-props-form
+      [parent]="parent"
+      *ngIf="show === 'COMMON'"
+      (onSubmit)="saveEvent.emit($event)"
+      (next)="showFoodForm()"
+      class="animate-fade-in">
     </plutus-transaction-common-props-form>
 
     <ng-container *ngIf="show === 'FOOD'">
-      <plutus-food-order-form [parent]="foodOrderForm" (back)="showCommonForm()" (save)="foodOrderSubmit($event)"></plutus-food-order-form>
+      <plutus-food-order-form
+        [parent]="foodOrderForm"
+        (back)="showCommonForm()"
+        (save)="foodOrderSubmit($event)"
+        class="animate-fade-in">
+      </plutus-food-order-form>
     </ng-container>
-
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormGroupTyped } from '../../../../../TypedForms'
 import { FoodOrderForm } from '../../../../types/TransactionForm'
 
@@ -9,13 +9,12 @@ import { FoodOrderForm } from '../../../../types/TransactionForm'
 })
 export class FoodOrderFormComponent implements OnInit {
   @Input() parent!: FormGroupTyped<FoodOrderForm>
-  @Output() back = new EventEmitter<void>();
-  @Output() save = new EventEmitter<FoodOrderForm>();
+  @Output() back = new EventEmitter<void>()
+  @Output() save = new EventEmitter<FoodOrderForm>()
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   clear() {
     this.parent.reset()

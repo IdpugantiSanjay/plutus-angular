@@ -8,6 +8,7 @@ import { Subject } from 'rxjs'
   selector: 'plutus-transaction-form',
   templateUrl: './transaction-form.component.html',
   styleUrls: ['./transaction-form.component.scss'],
+  animations: [],
 })
 export class TransactionFormComponent implements OnInit, OnDestroy {
   @Input() parent!: FormGroupTyped<TransactionForm>

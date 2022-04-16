@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { FoodOrderFormComponent } from './food-order-form.component'
-import {RatingComponent} from "../../../rating/rating.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import { RatingComponent } from '../../../rating/rating.component'
+import { ReactiveFormsModule } from '@angular/forms'
 
 describe('FoodOrderFormComponent', () => {
   let component: FoodOrderFormComponent
@@ -11,7 +11,7 @@ describe('FoodOrderFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FoodOrderFormComponent, RatingComponent],
-      imports: [ReactiveFormsModule]
+      imports: [ReactiveFormsModule],
     }).compileComponents()
 
     fixture = TestBed.createComponent(FoodOrderFormComponent)

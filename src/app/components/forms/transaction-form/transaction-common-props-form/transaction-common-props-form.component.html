@@ -45,20 +45,24 @@
         </div>
       </label>
     </div>
+
+    <div class="mt-4 flex justify-center gap-2">
+      <button class="w-full" plutusButton [secondary]="true" (click)="clear()" type="button">Clear</button>
+
+      <ng-container *ngIf="buttonState$ | async as state">
+        <button
+          [disabled]="state.isDisabled"
+          [type]="state.type"
+          (click)="state.name === 'Save' ? onSubmit() : onNext()"
+          plutusButton
+          class="w-full transition-colors"
+          data-test-id="save-next-button">
+          {{ state.name }}
+        </button>
+      </ng-container>
+    </div>
+
   </fieldset>
 
-  <div class="mt-4 flex justify-center gap-2">
-    <button class="btn btn-secondary w-full" (click)="clear()">Clear</button>
 
-    <ng-container *ngIf="buttonState$ | async as state">
-      <button
-        [disabled]="state.isDisabled"
-        [type]="state.type"
-        (click)="state.name === 'Save' ? onSubmit() : onNext()"
-        class="btn btn-primary w-full"
-        data-test-id="save-next-button">
-        {{ state.name }}
-      </button>
-    </ng-container>
-  </div>
 </form>

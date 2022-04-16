@@ -1,5 +1,5 @@
 import { TransactionFormComponent } from './transaction-form.component'
-import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 import { FoodOrderFormComponent } from './food-order-form/food-order-form.component'
 import { FormGroupTyped } from '../../../../TypedForms'
 import { TransactionForm } from '../../../types/TransactionForm'
@@ -148,7 +148,6 @@ describe('TransactionFormComponent', () => {
     expect(commonForm).toBeTruthy()
 
     saveButton = fixture.nativeElement.querySelector('button[data-test-id="save-next-button"]') as HTMLButtonElement
-
 
     expect(saveButton).toBeTruthy()
     expect(saveButton.disabled).toBeFalse()

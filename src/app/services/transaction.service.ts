@@ -7,7 +7,7 @@ import {
   TransactionServiceMethods,
   UpdateTransactionRequest,
 } from '../../types/transaction.service.type'
-import { Observable} from 'rxjs'
+import { Observable } from 'rxjs'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { TRANSACTIONS_URL_TOKEN } from '../app.module'
 

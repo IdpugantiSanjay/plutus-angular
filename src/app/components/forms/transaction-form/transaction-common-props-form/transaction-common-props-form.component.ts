@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormGroupTyped } from '../../../../../TypedForms'
 import { TransactionForm, TransactionFormButtonState } from '../../../../types/TransactionForm'
-import { FormControl} from '@angular/forms'
+import { FormControl } from '@angular/forms'
 import { getRoundedMinutes } from '../../../../functions/getRoundedMinutes'
-import { map, merge, of, startWith, Subject, takeUntil} from 'rxjs'
+import { map, merge, of, startWith, Subject, takeUntil } from 'rxjs'
 
 @Component({
   selector: 'plutus-transaction-common-props-form',
@@ -57,7 +57,6 @@ export class TransactionCommonPropsFormComponent implements OnInit {
       takeUntil(this.destroyed$)
     )
   }
-
 
   clear() {
     this.parent.reset()
