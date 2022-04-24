@@ -16,7 +16,18 @@ import { range } from '../../functions/range'
   ],
 })
 export class RatingComponent implements OnInit, ControlValueAccessor {
-  @Input('props') props: RatingProps = { count: 5, starSize: 30 }
+  @Input('props')
+  set props(value: RatingProps) {
+    this._props = value
+
+    this.writeValue(value.rating)
+  }
+
+  get props() {
+    return this._props;
+  }
+
+  private _props: RatingProps = { count: 5, starSize: 30, rating: 0 }
   public rating: number = 0
   public count: number[] = []
 
@@ -34,7 +45,7 @@ export class RatingComponent implements OnInit, ControlValueAccessor {
 
   writeValue(rating: number): void {
     this.rating = rating
-    this.count = Array.from(range(1, this.props.count + 1))
+    this.count = Array.from(range(1, this._props.count + 1))
   }
 
   constructor(@Attribute('disabled') public disabled: boolean) {}

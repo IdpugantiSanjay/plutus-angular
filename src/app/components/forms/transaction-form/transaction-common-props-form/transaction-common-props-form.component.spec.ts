@@ -4,6 +4,7 @@ import { TransactionCommonPropsFormComponent } from './transaction-common-props-
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
 import { FormGroupTyped } from '../../../../../TypedForms'
 import { TransactionForm } from '../../../../types/TransactionForm'
+import { ButtonDirective } from '../../../../directories/button.directive'
 
 describe('TransactionCommonPropsFormComponent', () => {
   let component: TransactionCommonPropsFormComponent
@@ -11,7 +12,7 @@ describe('TransactionCommonPropsFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TransactionCommonPropsFormComponent],
+      declarations: [TransactionCommonPropsFormComponent, ButtonDirective],
       imports: [ReactiveFormsModule],
       providers: [FormBuilder],
     }).compileComponents()

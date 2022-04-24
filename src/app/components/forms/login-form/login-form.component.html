@@ -1,6 +1,6 @@
 <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
   <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-    <form class="mb-0 space-y-6" [formGroup]="form">
+    <form class="mb-0 space-y-6" [formGroup]="parent" (submit)="onLogin()">
       <div>
         <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
         <div class="mt-1">
@@ -19,9 +19,32 @@
         type="submit"
         class="btn btn-primary w-full flex justify-center"
         (click)="onLogin()"
-        [disabled]="!form.valid">
+        plutusButton
+        [disabled]="!parent.valid">
         Login
       </button>
     </form>
+  </div>
+
+  <div
+    class="bg-red-100 border border-red-400 px-4 py-3 rounded-lg mt-4 mx-8 flex align-middle justify-between animate-fade-in"
+    role="alert"
+    *ngIf="parent.hasError('loginError')">
+    <span>{{ parent.getError('loginError') }}</span>
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-red-500 cursor-pointer"
+        fill="none"
+        (click)="parent.setErrors(null)"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </span>
   </div>
 </div>

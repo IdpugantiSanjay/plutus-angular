@@ -1,0 +1,9 @@
+<ng-container *ngIf="transactions$">
+  <div
+    class="bg-gray-100 min-h-screen p-6 grid 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 grid-flow-row-dense place-content-start">
+    <plutus-transaction-card
+      [transaction]="transaction"
+      class="w-full"
+      *ngFor="let transaction of transactions$ | async; index as i"></plutus-transaction-card>
+  </div>
+</ng-container>

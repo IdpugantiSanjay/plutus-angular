@@ -22,7 +22,7 @@
               d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
           </svg>
         </span>
-        <span> Food Order Details </span>
+        <span> Food Delivery Details </span>
       </div>
       <ng-container>
         <div class="space-y-6">
@@ -60,7 +60,9 @@
               <label
                 >Rating
                 <div class="mt-1 flex gap-4 mb-2">
-                  <plutus-rating [props]="{ starSize: 30, count: 5 }" formControlName="rating"></plutus-rating>
+                  <plutus-rating
+                    [props]="{ starSize: 30, count: 5, rating: 0 }"
+                    formControlName="rating"></plutus-rating>
                 </div>
               </label>
             </div>
@@ -69,7 +71,9 @@
       </ng-container>
 
       <div class="mt-4 flex justify-center gap-2">
-        <button class="btn btn-secondary w-full" (click)="clear()" plutusButton="true" [secondary]="true" type="button">Clear</button>
+        <button class="btn btn-secondary w-full" (click)="clear()" plutusButton="true" [secondary]="true" type="button">
+          Clear
+        </button>
 
         <ng-container>
           <button

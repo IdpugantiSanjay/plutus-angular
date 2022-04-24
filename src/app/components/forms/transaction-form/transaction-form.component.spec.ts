@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
 import { By } from '@angular/platform-browser'
 import { TransactionCommonPropsFormComponent } from './transaction-common-props-form/transaction-common-props-form.component'
 import { RatingComponent } from '../../rating/rating.component'
+import { ButtonDirective } from '../../../directories/button.directive'
 
 describe('TransactionFormComponent', () => {
   let component: TransactionFormComponent
@@ -20,6 +21,7 @@ describe('TransactionFormComponent', () => {
         FoodOrderFormComponent,
         TransactionCommonPropsFormComponent,
         RatingComponent,
+        ButtonDirective,
       ],
       providers: [FormBuilder],
     }).compileComponents()
@@ -44,7 +46,7 @@ describe('TransactionFormComponent', () => {
 
   it('when category is selected save button should be changed to next button', () => {
     const categorySelect = fixture.debugElement.query(By.css('#category')).nativeElement as HTMLSelectElement
-    categorySelect.value = 'Food Order'
+    categorySelect.value = 'Food Delivery'
     categorySelect.dispatchEvent(new Event('change'))
 
     fixture.detectChanges()
@@ -53,12 +55,12 @@ describe('TransactionFormComponent', () => {
       'button[data-test-id="save-next-button"]'
     ) as HTMLButtonElement
 
-    expect(component.parent.value.category).toBe('Food Order')
+    expect(component.parent.value.category).toBe('Food Delivery')
     expect(saveButton.getAttribute('type')).toBe('button')
     expect(saveButton.textContent).toContain('Next')
   })
 
-  it('when category is anything other than Food Order submit button should be Save Button', () => {
+  it('when category is anything other than Food Delivery submit button should be Save Button', () => {
     const categorySelect = fixture.debugElement.query(By.css('#category')).nativeElement as HTMLSelectElement
     categorySelect.value = 'Drinks'
     categorySelect.dispatchEvent(new Event('change'))
@@ -101,7 +103,7 @@ describe('TransactionFormComponent', () => {
 
   it('should show foodOrder form when next button is clicked', function () {
     const categorySelect = fixture.debugElement.query(By.css('#category')).nativeElement as HTMLSelectElement
-    categorySelect.value = 'Food Order'
+    categorySelect.value = 'Food Delivery'
     categorySelect.dispatchEvent(new Event('change'))
 
     fixture.detectChanges()
@@ -126,7 +128,7 @@ describe('TransactionFormComponent', () => {
     amountInput.dispatchEvent(new Event('input'))
 
     const categorySelect = fixture.debugElement.query(By.css('#category')).nativeElement as HTMLSelectElement
-    categorySelect.value = 'Food Order'
+    categorySelect.value = 'Food Delivery'
     categorySelect.dispatchEvent(new Event('change'))
 
     fixture.detectChanges()

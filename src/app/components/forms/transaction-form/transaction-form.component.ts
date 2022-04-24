@@ -46,6 +46,6 @@ export class TransactionFormComponent implements OnInit, OnDestroy {
   }
 
   foodOrderSubmit(foodOrderForm: FoodOrderForm) {
-    this.saveEvent.emit({ ...foodOrderForm, ...this.parent.value })
+    this.saveEvent.emit({ ...this.parent.value, foodOrder: { ...foodOrderForm } })
   }
 }

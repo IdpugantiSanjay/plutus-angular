@@ -1,0 +1,46 @@
+.budget {
+  display: grid;
+  grid-template-areas:
+    'category empty empty empty empty empty stats  edit'
+    'used used used used used used used edit';
+
+  grid-gap: 5px 10px;
+}
+
+.category {
+  grid-area: category;
+  justify-self: start;
+}
+
+.stats {
+  grid-area: stats;
+  justify-self: end;
+}
+
+.used {
+  grid-area: used;
+  width: 100%;
+}
+
+.edit {
+  grid-area: edit;
+  align-self: center;
+  justify-self: end;
+}
+//
+//.progress-bar {
+//  display: grid;
+//
+//  & .text {
+//    grid-area: 1 / 2 / 1 / 2;
+//    z-index: 1;
+//  }
+//
+//  & .bar {
+//    grid-area: 1 / 2 / 1 / 2;
+//    z-index: 1;
+//  }
+//}
+
+
+

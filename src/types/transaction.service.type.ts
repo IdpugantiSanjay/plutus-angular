@@ -22,8 +22,27 @@ export type Transaction = {
   username: string
 }
 
+export type Budget = {
+  id: string
+  category: string
+  username: string
+  capacity: number
+  consumed: number
+  frequency: 0 | 1
+}
+
+export type BudgetKeys = keyof Budget
+
+export type Authentication = {
+  username: string
+  password: string
+  bearerToken: string
+}
+
 export type EntityMap = {
   Transaction: Transaction
+  Authentication: Authentication
+  Budget: Budget
 }
 
 export type ListRequestProps = { limit?: number; offset?: number; /* url-safe base64 */ pageToken?: string }
@@ -57,18 +76,19 @@ export type Update<
 
 export type BatchGet<
   Entity extends keyof EntityMap,
-  Request = { ids: EntityMap[Entity]['id'][] },
+  Request = { ids: EntityMap[Entity]['username'][] },
   Response = EntityMap[Entity][]
 > = { [K in Entity as `BatchGet${K}s`]: (request: Request) => Observable<Response> }
 
 export type TransactionType = 'income' | 'expense'
 
 export type SortableTransactionFields = 'amount' | 'date' | 'category'
+export type SortableBudgetFields = Exclude<BudgetKeys, 'username' | 'id' | 'frequency'>
 
 export type ListTransactionsRequest = ListRequestProps & {
-  filters: Partial<{
-    [K in keyof Omit<EntityMap['Transaction'], 'id' | 'description' | 'amount'>]: EntityMap['Transaction'][K]
-  }> & { username: string }
+  // filters: Partial<{
+  //   [K in keyof Omit<EntityMap['Transaction'], 'id' | 'description' | 'amount'>]: EntityMap['Transaction'][K]
+  // }>
 } & { includeTotalResults?: boolean } & { orderBy: OrderBy<SortableTransactionFields> }
 
 export type UpdateTransactionRequest = {
@@ -89,3 +109,15 @@ export type TransactionServiceMethods = Get<
     ListResponseProps<Omit<EntityMap['Transaction'], 'username'> & { humanizedDate: string }>
   > &
   BatchGet<'Transaction'>
+
+export type ListBudgetsRequest = ListRequestProps & { dateTime: string } & {
+  includeTotalResults?: boolean
+} & { orderBy: OrderBy<SortableTransactionFields> }
+
+export type BudgetServiceMethods = List<'Budget', ListBudgetsRequest>
+
+export type AuthServiceMethods = Create<
+  'Authentication',
+  Pick<Authentication, 'username' | 'password'>,
+  Pick<Authentication, 'bearerToken'>
+>

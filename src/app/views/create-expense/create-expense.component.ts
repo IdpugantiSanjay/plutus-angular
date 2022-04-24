@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroupTyped} from "../../../TypedForms";
-import {TransactionForm} from "../../types/TransactionForm";
-import {FormBuilder, FormControl} from "@angular/forms";
-import {TransactionService} from "../../services/transaction.service";
+import { Component, OnInit } from '@angular/core'
+import { FormGroupTyped } from '../../../TypedForms'
+import { TransactionForm } from '../../types/TransactionForm'
+import { FormBuilder, FormControl } from '@angular/forms'
+import { TransactionService } from '../../services/transaction.service'
+import { Title } from '@angular/platform-browser'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'plutus-create-expense',
   templateUrl: './create-expense.component.html',
-  styleUrls: ['./create-expense.component.scss']
+  styleUrls: ['./create-expense.component.scss'],
+  providers: [],
 })
 export class CreateExpenseComponent implements OnInit {
   form!: FormGroupTyped<TransactionForm>
@@ -21,11 +24,20 @@ export class CreateExpenseComponent implements OnInit {
     }) as FormGroupTyped<TransactionForm>
   }
 
-  title = 'plutus-web-experimental'
-
-  constructor(private fb: FormBuilder, private service: TransactionService) {}
+  constructor(
+    private fb: FormBuilder,
+    private service: TransactionService,
+    private title: Title,
+    private router: Router
+  ) {
+    title.setTitle('Create Expense')
+  }
 
   submit(form: TransactionForm) {
-    this.service.CreateTransaction({ ...form, username: 'sanjay', type: 'expense' })
+    this.service.CreateTransaction({ ...form, username: 'sanjay', type: 'expense' }).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/list')
+      },
+    })
   }
 }

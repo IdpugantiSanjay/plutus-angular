@@ -50,8 +50,8 @@ export class TransactionCommonPropsFormComponent implements OnInit {
       map((category) => {
         return {
           isDisabled: !this.parent.valid,
-          type: category === 'Food Order' ? 'button' : 'submit',
-          name: category !== 'Food Order' ? 'Save' : 'Next',
+          type: category === 'Food Delivery' ? 'button' : 'submit',
+          name: category !== 'Food Delivery' ? 'Save' : 'Next',
         } as TransactionFormButtonState
       }),
       takeUntil(this.destroyed$)

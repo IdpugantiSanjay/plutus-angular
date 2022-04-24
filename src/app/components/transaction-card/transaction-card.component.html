@@ -1,0 +1,89 @@
+<div
+  class="rounded-lg shadow-sm max-w-sm h-16 min-w-[300px] bg-white grid grid-cols-3 place-items-center cursor-pointer hover:bg-gray-50">
+  <div class="bg-teal-100 rounded-full p-2 text-teal-700 mr-2 self-center">
+    <div [ngSwitch]="transaction.category">
+      <plutus-food-order-icon *ngSwitchCase="'Food Delivery'"></plutus-food-order-icon>
+      <plutus-drinks-icon *ngSwitchCase="'Drinks'"></plutus-drinks-icon>
+      <plutus-entertainment-icon *ngSwitchCase="'Entertainment'"></plutus-entertainment-icon>
+      <plutus-medicine-icon *ngSwitchCase="'Medicine'"></plutus-medicine-icon>
+    </div>
+  </div>
+  <div>
+    <div>
+      <span class="font-bold">{{ transaction.category }}</span>
+    </div>
+    <!--    <div>-->
+    <!--      <time class="opacity-60 text-sm">-->
+    <!--        {{ transaction.dateTime | date:'longDate' }}-->
+    <!--      </time>-->
+    <!--    </div>-->
+    <!--    <div>-->
+    <!--        <span>-->
+    <!--        {{ transaction.description }}-->
+    <!--        </span>-->
+    <!--    </div>-->
+  </div>
+  <div>
+    <div class="font-bold text-base">₹ {{ transaction.amount }}</div>
+    <div>
+      <time class="opacity-60 text-sm">
+        {{ transaction.dateTime | date: 'longDate' }}
+      </time>
+    </div>
+  </div>
+</div>
+
+<!--<div class="rounded-lg shadow-sm bg-white p-4 hover:bg-gray-50 cursor-pointer max-w-sm h-24 min-w-[300px]">-->
+<!--  <div class="flex justify-between items-center">-->
+<!--    <div class="flex">-->
+<!--      <div class="bg-teal-100 rounded-full p-2 text-teal-700 mr-2 self-center">-->
+<!--        <div [ngSwitch]="transaction.category">-->
+<!--          <plutus-food-order-icon *ngSwitchCase="'Food Delivery'"></plutus-food-order-icon>-->
+<!--          <plutus-drinks-icon *ngSwitchCase="'Drinks'"></plutus-drinks-icon>-->
+<!--          <plutus-entertainment-icon *ngSwitchCase="'Entertainment'"></plutus-entertainment-icon>-->
+<!--          <plutus-medicine-icon *ngSwitchCase="'Medicine'"></plutus-medicine-icon>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;          <FoodOrderIcon v-if="transaction.category === CategoriesMap.FoodOrder"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <TravelIcon v-if="transaction.category === CategoriesMap.Travel"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <EntertainmentIcon v-if="transaction.category === CategoriesMap.Entertainment"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <TravelIcon v-if="transaction.category === CategoriesMap.Shopping"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <DrinksIcon v-if="transaction.category === CategoriesMap.Drinks"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <InternetIcon v-if="transaction.category === CategoriesMap.Internet"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <MobileRechargeIcon v-if="transaction.category === CategoriesMap.MobileRecharge"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <MedicineIcon v-if="transaction.category === CategoriesMap.Medicine"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <MutualFundsIcon v-if="transaction.category === CategoriesMap.MutualFunds"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <TransferIcon v-if="transaction.category === CategoriesMap.Transfer"/>&ndash;&gt;-->
+
+<!--      </div>-->
+<!--      <div class="flex flex-col max-w-[12rem]">-->
+<!--        <div class="font-bold text-lg">{{ transaction.category }}</div>-->
+<!--        <div class="text-xs opacity-70 max-w-[100%] truncate" *ngIf="transaction.description">-->
+<!--          {{ transaction.description }}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="basis-12">-->
+<!--      <div class="font-bold">₹ {{ transaction.amount }}</div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="text-xs opacity-70 flex justify-between mt-2">-->
+<!--    <div>-->
+<!--      <div *ngIf="transaction.category === 'Food Delivery'">-->
+<!--        <plutus-rating [props]="{ count: 5, starSize: 30, rating: 3 }"></plutus-rating>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="flex items-center gap-2">-->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"-->
+<!--           style="fill: currentColor">-->
+<!--        <path d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"></path>-->
+<!--        <path-->
+<!--          d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"></path>-->
+<!--      </svg>-->
+<!--      <time class="text-gray-800">-->
+<!--        {{ transaction.dateTime | date:'MMM d, yyyy' }}-->
+<!--      </time>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
