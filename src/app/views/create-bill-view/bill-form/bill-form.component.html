@@ -1,0 +1,87 @@
+
+<!---->
+<ng-container *ngIf="parent">
+
+  <form class="max-w-1/4 m-auto mt-12 shadow rounded-md p-6 bg-white"  [formGroup]="parent" (submit)="onSubmit($event)">
+    <fieldset>
+      <div class="mt-2">
+        <label for="amount">
+          Amount
+          <div class="mt-1">
+            <input id="amount" type="number" required min="1" autofocus formControlName="amount"/>
+          </div>
+        </label>
+      </div>
+
+      <div class="mt-4">
+        <label for="biller"
+        >Biller
+          <div class="mt-1 flex gap-4">
+            <div class="flex-1">
+              <input id="biller" name="dish" type="text" required formControlName="biller"/>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="mt-4">
+        <label for="billCategory">
+          Category
+          <select name="category" id="billCategory" required class="mt-1" formControlName="category">
+            <optgroup label="Please select a category">
+              <option value=""> Please select a category </option>
+            </optgroup>
+            <optgroup *ngFor="let mainCategory of service.categories" [label]="mainCategory[0]">
+              <option *ngFor="let subCategory of mainCategory[1]">{{ subCategory }}</option>
+            </optgroup>
+          </select>
+        </label>
+      </div>
+
+      <div class="mt-4">
+        <label for="dueDate"
+        >Due Date
+          <input id="dueDate" name="date" type="date" required formControlName="dueDate"/>
+        </label>
+      </div>
+
+
+
+      <div class="mt-4">
+        <label for="repeatFrequency">
+          Repeat
+          <div class="mt-1">
+            <select name="repeat" id="repeatFrequency" required formControlName="repeat">
+              <option value="1">One Time</option>
+              <option value="2">Every Month</option>
+              <option value="3">Every Three Months</option>
+              <option value="4">Every Six Months</option>
+              <option value="5">Every Year</option>
+            </select>
+          </div>
+        </label>
+      </div>
+
+
+
+      <div class="mt-6">
+        <label for="autoMarkAsPaid">
+          <input id="autoMarkAsPaid" type="checkbox" class="mr-2"/>
+          Auto Mark as Paid ?
+        </label>
+      </div>
+
+      <div class="mt-6 flex justify-center gap-2">
+        <button class="w-full" plutusButton [secondary]="true" type="reset">Clear</button>
+
+        <button
+          plutusButton
+          class="w-full transition-colors"
+        >
+          Save
+        </button>
+      </div>
+    </fieldset>
+  </form>
+
+</ng-container>
