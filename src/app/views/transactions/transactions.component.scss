@@ -1,3 +1,44 @@
+//.transaction {
+//  &::before {
+//
+//  }
+//}
+
+.separator {
+  margin-inline: auto;
+  width: 90%;
+  background: #000;
+  height: 1px;
+  @apply bg-gray-200;
+}
+
+//
+//.transaction > div::before {
+//  content: '';
+//  position: absolute;
+//  bottom: 0;
+//  left: 5%;
+//  width: 90%;
+//  background: #000;
+//  height: 1px;
+//
+//  @apply bg-gray-300;
+//}
+//
+//div .transaction:not(:last-child) {
+//  &::before {
+//    content: '';
+//    position: absolute;
+//    bottom: 0;
+//    left: 5%;
+//    width: 90%;
+//    background: #000;
+//    height: 1px;
+//
+//    @apply bg-gray-300;
+//  }
+//}
+
 .transaction-card-container {
   animation-name: animateIn;
   animation-duration: 350ms;

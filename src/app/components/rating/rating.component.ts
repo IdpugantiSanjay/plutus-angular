@@ -24,7 +24,7 @@ export class RatingComponent implements OnInit, ControlValueAccessor {
   }
 
   get props() {
-    return this._props;
+    return this._props
   }
 
   private _props: RatingProps = { count: 5, starSize: 30, rating: 0 }

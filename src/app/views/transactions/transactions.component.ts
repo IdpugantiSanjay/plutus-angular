@@ -14,7 +14,7 @@ export class TransactionsComponent implements OnInit {
 
   constructor(private service: TransactionService, title: Title) {
     this.transactions$ = service
-      .ListTransactions({ orderBy: 'date desc' })
+      .ListTransactions({ orderBy: 'dateTime desc', pageSize: 5 })
       .pipe(map((r) => r.entities))
 
     title.setTitle('Transactions View')

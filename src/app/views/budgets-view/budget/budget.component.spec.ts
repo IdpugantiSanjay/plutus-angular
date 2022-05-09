@@ -1,24 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { BudgetComponent } from './budget.component';
+import { BudgetComponent } from './budget.component'
 
 describe('BudgetComponent', () => {
-  let component: BudgetComponent;
-  let fixture: ComponentFixture<BudgetComponent>;
+  let component: BudgetComponent
+  let fixture: ComponentFixture<BudgetComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BudgetComponent ]
-    })
-    .compileComponents();
+      declarations: [BudgetComponent],
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(BudgetComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(BudgetComponent)
+    component = fixture.componentInstance
     component.input = { name: 'Food Delivery', capacity: 10, consumed: 10 }
-    fixture.detectChanges();
-  });
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

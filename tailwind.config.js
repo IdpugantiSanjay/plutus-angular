@@ -5,10 +5,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
       },
       flexShrink: { 2: 2 },
-      maxWidth: { '1/2': '50%', '3/4': '75%' },
+      maxWidth: { '1/2': '50%', '3/4': '75%', '1/3': '33.33%', '1/4': '25%' },
       width: { '1/2': '50%', '4/6': '60%', '2/6': '40%' },
       boxShadow: {
         inset: 'inset 0 -4px 0 rgb(0 0 0 / 30%)',

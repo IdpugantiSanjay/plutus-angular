@@ -45,7 +45,7 @@ export type EntityMap = {
   Budget: Budget
 }
 
-export type ListRequestProps = { limit?: number; offset?: number; /* url-safe base64 */ pageToken?: string }
+export type ListRequestProps = { pageSize?: number; /* url-safe base64 */ pageToken?: string }
 export type ListResponseProps<T> = { pageSize: number; nextPageToken: string; entities: T[] }
 
 export type Get<Entity extends keyof EntityMap, Request = { id: string }, Response = EntityMap[Entity]> = {
@@ -82,7 +82,7 @@ export type BatchGet<
 
 export type TransactionType = 'income' | 'expense'
 
-export type SortableTransactionFields = 'amount' | 'date' | 'category'
+export type SortableTransactionFields = 'amount' | 'dateTime' | 'category'
 export type SortableBudgetFields = Exclude<BudgetKeys, 'username' | 'id' | 'frequency'>
 
 export type ListTransactionsRequest = ListRequestProps & {

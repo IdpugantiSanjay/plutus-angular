@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    height: 100%;
+    @apply bg-gray-50;
+  }
+
   [type='text'],
   [type='email'],
   [type='url'],
@@ -21,6 +27,13 @@
   select {
     @apply w-full border-gray-300 rounded-lg focus:border-teal-500 focus:ring-teal-500;
   }
+
+  [type='checkbox'],
+  [type='radio'] {
+    @apply border-gray-300 rounded text-teal-500 focus:ring-teal-500;
+  }
+
+
 
   /*[type='text']:invalid,*/
   /*[type='email']:invalid,*/

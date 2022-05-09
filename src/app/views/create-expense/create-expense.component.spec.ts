@@ -10,7 +10,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { FoodOrderFormComponent } from '../../components/forms/transaction-form/food-order-form/food-order-form.component'
 import { TransactionService } from '../../services/transaction.service'
 import { TRANSACTIONS_URL_TOKEN } from '../../app.module'
-import {RouterTestingModule} from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('CreateExpenseComponent', () => {
   let component: CreateExpenseComponent

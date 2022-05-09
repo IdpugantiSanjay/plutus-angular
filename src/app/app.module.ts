@@ -24,8 +24,10 @@ import { TransactionCardComponent } from './components/transaction-card/transact
 import { FoodOrderIconComponent } from './components/icons/food-order-icon.component'
 import { EntertainmentIconComponent } from './components/icons/entertainment-icon.component'
 import { MedicineIconComponent } from './components/icons/medicine-icon.component'
-import { BudgetsViewComponent } from './views/budgets-view/budgets-view.component';
+import { BudgetsViewComponent } from './views/budgets-view/budgets-view.component'
 import { BudgetComponent } from './views/budgets-view/budget/budget.component'
+import { CreateBillViewComponent } from './views/create-bill-view/create-bill-view.component'
+import { BillFormComponent } from './views/create-bill-view/bill-form/bill-form.component'
 
 const API_BASE_URL_TOKEN = new InjectionToken<string>('Base API TOKEN')
 export const TRANSACTIONS_URL_TOKEN = new InjectionToken<string>('Transactions API Token')
@@ -53,6 +55,8 @@ export const USERNAME_TOKEN = new InjectionToken<BehaviorSubject<string>>('User 
     MedicineIconComponent,
     BudgetsViewComponent,
     BudgetComponent,
+    CreateBillViewComponent,
+    BillFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule],
   bootstrap: [AppComponent],

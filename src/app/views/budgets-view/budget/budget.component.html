@@ -1,16 +1,17 @@
 <div class="budget">
   <div class="category text-[1.1rem] tracking-tight">{{ input.name }}</div>
-  <div class="stats text-[1.1rem]">{{ input.capacity - input.consumed }}₹
-    {{ input.capacity - input.consumed >= 0 ? 'left' : 'over' }}</div>
+  <div class="stats text-[1.1rem]">
+    {{ input.capacity - input.consumed }}₹ {{ input.capacity - input.consumed >= 0 ? 'left' : 'over' }}
+  </div>
   <div class="used">
     <div class="relative bg-gray-200">
       <div class="pl-2 text-white font-medium absolute">{{ input.consumed }}₹ of {{ input.capacity }}₹</div>
-      <div class="bg-teal-500 top-0 text-white font-medium rounded-r-sm"
-           [class.bg-teal-500]="input.capacity - input.consumed > 0"
-           [class.bg-yellow-400]="input.capacity - input.consumed === 0"
-           [class.bg-red-500]="input.capacity - input.consumed < 0"
-           [style.width]="percent"
-      >
+      <div
+        class="bg-teal-500 top-0 text-white font-medium rounded-r-sm"
+        [class.bg-teal-500]="input.capacity - input.consumed > 0"
+        [class.bg-yellow-400]="input.capacity - input.consumed === 0"
+        [class.bg-red-500]="input.capacity - input.consumed < 0"
+        [style.width]="percent">
         &nbsp;
       </div>
     </div>
@@ -28,7 +29,7 @@
         clip-rule="evenodd"
         class="text-teal-700"
         d="M15.5639 2.7326C15.7177 2.96549 15.692 3.28198 15.487 3.487L8.13309 10.8409C8.05771 10.9163 7.9636 10.9702 7.86046 10.9972L4.79772 11.7972C4.69783 11.8233 4.59486 11.8227 4.49812 11.7981C4.39526 11.7719 4.29945 11.7185 4.22183 11.6409C4.07121 11.4903 4.01174 11.2711 4.06557 11.065L4.86557 8.00227C4.88915 7.91202 4.93338 7.82289 4.99457 7.75297L12.3757 0.375733C12.4403 0.311122 12.5182 0.262765 12.6029 0.233302C12.6657 0.211456 12.7322 0.199997 12.8 0.199997C12.9591 0.199997 13.1117 0.263211 13.2243 0.375733L15.487 2.63847C15.5163 2.66776 15.5419 2.69933 15.5639 2.7326ZM14.2142 3.06274L12.8 1.64852L5.98547 8.46306L5.48548 10.3773L7.39969 9.87727L14.2142 3.06274Z"
-        fill="currentColor"/>
+        fill="currentColor" />
     </svg>
   </div>
 </div>

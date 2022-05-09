@@ -1,5 +1,4 @@
-<div
-  class="rounded-lg shadow-sm max-w-sm h-16 min-w-[300px] bg-white grid grid-cols-3 place-items-center cursor-pointer hover:bg-gray-50">
+<div>
   <div class="bg-teal-100 rounded-full p-2 text-teal-700 mr-2 self-center">
     <div [ngSwitch]="transaction.category">
       <plutus-food-order-icon *ngSwitchCase="'Food Delivery'"></plutus-food-order-icon>
@@ -10,7 +9,7 @@
   </div>
   <div>
     <div>
-      <span class="font-bold">{{ transaction.category }}</span>
+      <span>{{ transaction.category }}</span>
     </div>
     <!--    <div>-->
     <!--      <time class="opacity-60 text-sm">-->

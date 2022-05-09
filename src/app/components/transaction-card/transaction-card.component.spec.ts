@@ -13,7 +13,15 @@ describe('TransactionCardComponent', () => {
 
     fixture = TestBed.createComponent(TransactionCardComponent)
     component = fixture.componentInstance
-    component.transaction = { category: '', description: '', amount: 0, dateTime: new Date(), humanizedDate: '', id: '', type: 'income' }
+    component.transaction = {
+      category: '',
+      description: '',
+      amount: 0,
+      dateTime: new Date(),
+      humanizedDate: '',
+      id: '',
+      type: 'income',
+    }
     fixture.detectChanges()
   })
 

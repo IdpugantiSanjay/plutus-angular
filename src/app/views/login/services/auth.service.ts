@@ -40,7 +40,7 @@ export class AuthService implements AuthServiceMethods {
       )
   }
 
-  GetAuthenticationInfo(): { username: string, bearerToken: string } {
+  GetAuthenticationInfo(): { username: string; bearerToken: string } {
     return { username: this.username!, bearerToken: this.bearerToken! }
   }
 
