@@ -24,7 +24,7 @@ function parseJwt(token: string) {
 })
 export class AuthService implements AuthServiceMethods {
   private username: string | null = null
-  private bearerToken: string | null = null
+  private bearerToken: string | undefined = undefined
 
   CreateAuthentication(
     request: Pick<Authentication, 'username' | 'password'>
@@ -33,6 +33,7 @@ export class AuthService implements AuthServiceMethods {
       .post<Pick<Authentication, 'bearerToken'>>(`${this.api}/${request.username}:authenticate`, request)
       .pipe(
         tap(({ bearerToken }) => {
+          this.usernameSubject.next(request.username)
           this.username = request.username
           this.bearerToken = bearerToken
           localStorage.setItem('bearerToken', bearerToken)
@@ -44,9 +45,15 @@ export class AuthService implements AuthServiceMethods {
     return { username: this.username!, bearerToken: this.bearerToken! }
   }
 
+  ClearAuthentication(): void {
+    localStorage.removeItem('bearerToken')
+    this.usernameSubject.next(undefined)
+    this.bearerToken = undefined
+  }
+
   constructor(
     @Inject(USERS_URL_TOKEN) private api: string,
-    @Inject(USERNAME_TOKEN) username: BehaviorSubject<string>,
+    @Inject(USERNAME_TOKEN) private usernameSubject: BehaviorSubject<string | undefined>,
     private http: HttpClient
   ) {
     const bearerToken = localStorage.getItem('bearerToken')
@@ -54,7 +61,7 @@ export class AuthService implements AuthServiceMethods {
       this.bearerToken = bearerToken
       this.username = parseJwt(bearerToken).sub
 
-      if (this.username) username.next(this.username)
+      if (this.username) usernameSubject.next(this.username)
     }
   }
 }

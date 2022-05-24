@@ -15,9 +15,9 @@
           Category
           <select name="category" id="category" required formControlName="category">
             <option disabled value="">Please select a category</option>
-            <option value="Food Delivery">Food Delivery</option>
-            <option value="Drinks">Drinks</option>
-            <option value="Entertainment">Entertainment</option>
+            <optgroup [label]="sections[0]" *ngFor="let sections of categories">
+              <option *ngFor="let subSection of sections[1]">{{ subSection }}</option>
+            </optgroup>
           </select>
         </label>
       </div>

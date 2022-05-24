@@ -1,9 +1,9 @@
-<div class="mt-8 mx-auto sm:max-w-md max-w-sm">
-  <div class="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
+<div>
+  <div class="bg-white py-8 px-6 shadow rounded-lg">
     <plutus-transaction-common-props-form
       [parent]="parent"
       *ngIf="show === 'COMMON'"
-      (onSubmit)="saveEvent.emit($event)"
+      (onSubmit)="save($event)"
       (next)="showFoodForm()"
       class="animate-fade-in">
     </plutus-transaction-common-props-form>

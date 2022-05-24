@@ -1,7 +1,5 @@
 import { Inject, Injectable } from '@angular/core'
 import {
-  EntityMap,
-  ListResponseProps,
   ListTransactionsRequest,
   Transaction,
   TransactionServiceMethods,
@@ -11,6 +9,8 @@ import { Observable } from 'rxjs'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { TRANSACTIONS_URL_TOKEN } from '../app.module'
 import { stringify } from '../common/stringify'
+import { ListResponseProps } from '../../types/common'
+import { EntityMap } from '../../types/entities'
 
 @Injectable({
   providedIn: 'root',

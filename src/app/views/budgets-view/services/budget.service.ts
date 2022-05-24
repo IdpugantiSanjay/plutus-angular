@@ -1,14 +1,11 @@
 import { Inject, Injectable } from '@angular/core'
-import {
-  BudgetServiceMethods,
-  EntityMap,
-  ListBudgetsRequest,
-  ListResponseProps,
-} from '../../../../types/transaction.service.type'
+import { BudgetServiceMethods, ListBudgetsRequest } from '../../../../types/transaction.service.type'
 import { Observable } from 'rxjs'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { BUDGETS_URL_TOKEN } from '../../../app.module'
 import { stringify } from '../../../common/stringify'
+import { ListResponseProps } from '../../../../types/common'
+import { EntityMap } from '../../../../types/entities'
 
 @Injectable({
   providedIn: 'root',

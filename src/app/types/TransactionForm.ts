@@ -1,16 +1,6 @@
-export type TransactionForm = {
-  category: string
-  amount: number
-  description: string
-  dateTime: Date
-  foodOrder?: FoodOrderForm
-}
+import { Transaction } from '../../types/transaction.service.type'
 
-export type FoodOrderForm = {
-  rating: number
-  dish: string
-  restaurant: string
-}
+export type TransactionForm = Omit<Transaction, 'id' | 'username' | 'type'>
 
 export type TransactionFormButtonState = {
   name: 'Save' | 'Next'

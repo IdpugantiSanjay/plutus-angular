@@ -4,6 +4,7 @@ import { TransactionForm, TransactionFormButtonState } from '../../../../types/T
 import { FormControl } from '@angular/forms'
 import { getRoundedMinutes } from '../../../../functions/getRoundedMinutes'
 import { map, merge, of, startWith, Subject, takeUntil } from 'rxjs'
+import { CategoryService } from '../../../../services/category.service'
 
 @Component({
   selector: 'plutus-transaction-common-props-form',
@@ -21,8 +22,11 @@ export class TransactionCommonPropsFormComponent implements OnInit {
   time = new FormControl(`${new Date().getHours().toString().padStart(2, '0')}:${getRoundedMinutes(new Date())}`)
   private destroyed$ = new Subject<void>()
   buttonState$ = of<TransactionFormButtonState>({ name: 'Save', isDisabled: true, type: 'submit' })
+  readonly categories
 
-  constructor() {}
+  constructor(private categoryService: CategoryService) {
+    this.categories = categoryService.categories
+  }
 
   ngOnInit(): void {
     this.reactToDateAndTimeChanges()

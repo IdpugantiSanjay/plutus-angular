@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
+      fontSize: {
+        '2xs': '0.65rem',
+      },
       fontFamily: {
         sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
       },

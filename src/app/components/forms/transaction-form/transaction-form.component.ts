@@ -1,8 +1,9 @@
 import { Attribute, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core'
-import { FormBuilder, Validators } from '@angular/forms'
+import { FormBuilder } from '@angular/forms'
 import { FormGroupTyped } from '../../../../TypedForms'
-import { FoodOrderForm, TransactionForm } from '../../../types/TransactionForm'
+import { TransactionForm } from '../../../types/TransactionForm'
 import { Subject } from 'rxjs'
+import { FoodOrder } from '../../../../types/transaction.service.type'
 
 @Component({
   selector: 'plutus-transaction-form',
@@ -16,10 +17,11 @@ export class TransactionFormComponent implements OnInit, OnDestroy {
 
   show: 'COMMON' | 'FOOD' = 'COMMON'
   private destroyed$ = new Subject<void>()
-  foodOrderForm: FormGroupTyped<FoodOrderForm>
 
-  constructor(private fb: FormBuilder, @Attribute('disabled') public readonly disabled: boolean) {
-    this.foodOrderForm = this.createFoodOrderGroup()
+  constructor(private fb: FormBuilder, @Attribute('disabled') public readonly disabled: boolean) {}
+
+  get foodOrderForm(): FormGroupTyped<FoodOrder> {
+    return this.parent.get('foodOrder') as FormGroupTyped<FoodOrder>
   }
 
   ngOnDestroy(): void {
@@ -27,15 +29,17 @@ export class TransactionFormComponent implements OnInit, OnDestroy {
     this.destroyed$.complete()
   }
 
-  private createFoodOrderGroup(): FormGroupTyped<FoodOrderForm> {
+  private createFoodOrderGroup(): FormGroupTyped<FoodOrder> {
     return this.fb.group({
       restaurant: '',
-      dish: '',
-      rating: [0, [Validators.required, Validators.min(1), Validators.max(5)]],
-    }) as FormGroupTyped<FoodOrderForm>
+      dishes: this.fb.array([]),
+    }) as FormGroupTyped<FoodOrder>
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const foodOrderForm = this.createFoodOrderGroup()
+    this.parent.addControl('foodOrder', foodOrderForm)
+  }
 
   showCommonForm() {
     this.show = 'COMMON'
@@ -45,7 +49,11 @@ export class TransactionFormComponent implements OnInit, OnDestroy {
     this.show = 'FOOD'
   }
 
-  foodOrderSubmit(foodOrderForm: FoodOrderForm) {
+  save(transaction: Pick<TransactionForm, 'amount' | 'category' | 'dateTime' | 'description'>) {
+    this.saveEvent.emit(transaction)
+  }
+
+  foodOrderSubmit(foodOrderForm: FoodOrder) {
     this.saveEvent.emit({ ...this.parent.value, foodOrder: { ...foodOrderForm } })
   }
 }

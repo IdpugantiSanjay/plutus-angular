@@ -1,7 +1,7 @@
 <div *ngIf="transactions$" class="px-[4%] main">
-  <div class="container m-auto rounded-md bg-white shadow-md mt-8">
+  <div class="container m-auto rounded-md bg-white shadow-md mt-8 animate-fade-in">
     <div class="flex justify-between content-center p-4">
-      <div class="font-medium">Recent transactions</div>
+      <div class="font-medium cursor-pointer" routerLink="/new">Recent transactions</div>
       <div>
         <button class="font-medium text-teal-700 hover:underline">See all</button>
       </div>
@@ -23,9 +23,10 @@
         </div>
 
         <div class="flex-1 ml-2 min-w-0">
-          <div class="text-base font-bold mb-2 truncate">
-            {{ transaction.description || transaction.category }}
-          </div>
+          <div
+            class="text-base font-bold mb-2 truncate"
+            [textContent]="cardTitle(transaction)"
+            [title]="cardTitle(transaction)"></div>
           <div class="text-sm opacity-60">
             {{ transaction.category }}
           </div>
@@ -41,9 +42,9 @@
     </div>
   </div>
 
-  <div class="container m-auto rounded-md bg-white shadow-md mt-8">
+  <div class="container m-auto rounded-md bg-white shadow-md mt-8 animate-fade-in" *ngIf="(bills$ | async)?.length">
     <div class="flex justify-between content-center p-4">
-      <div class="font-medium">Bills and subscriptions</div>
+      <div class="font-medium cursor-pointer" routerLink="/bills/new">Bills and subscriptions</div>
       <div class="text-teal-500">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -60,27 +61,29 @@
       </div>
     </div>
 
-    <div class="text-3xl font-bold pl-4 py-2">₹3,674 due</div>
+    <div class="text-3xl font-bold pl-4 py-2">{{ totalBillsDue$ | async | currency: 'INR' }}</div>
 
-    <div>
+    <div *ngFor="let bill of bills$ | async; let i = index">
+      <div class="separator" *ngIf="i != 0"></div>
       <div class="flex items-center p-4">
         <div class="min-w-min text-sm opacity-60 flex flex-col items-center justify-center basis-12">
-          <div>Feb</div>
-          <div>21</div>
+          <div>{{ bill.dueDate | date: 'MMM' }}</div>
+          <div>{{ bill.dueDate | date: 'd' }}</div>
         </div>
-        <div class="font-medium justify-self-start flex-1 ml-4">Cox Internet</div>
-        <div class="font-medium">₹824</div>
-      </div>
-
-      <div class="separator"></div>
-
-      <div class="flex items-center p-4">
-        <div class="min-w-min text-sm opacity-60 flex flex-col items-center justify-center basis-12">
-          <div>Mar</div>
-          <div>1</div>
+        <div class="font-medium justify-self-start flex-1 ml-4 flex flex-col gap-1">
+          <span>{{ bill.biller }}</span>
+          <span *ngIf="bill.autoMarkAsPaid" class="text-2xs font-bold text-teal-600" title="Auto Pay Transaction">
+            AUTO
+          </span>
+          <span
+            *ngIf="!bill.paid"
+            class="text-2xs font-bold text-sky-600 cursor-pointer hover:underline"
+            title="Auto Pay Transaction"
+            (click)="markBillAsPaid(bill.id!)">
+            MARK AS PAID
+          </span>
         </div>
-        <div class="font-medium justify-self-start flex-1 ml-4">Mobile Recharge</div>
-        <div class="font-medium">₹209</div>
+        <div class="font-medium" [class.text-emerald-700]="bill.isIncome">{{ bill.amount | currency: 'INR' }}</div>
       </div>
     </div>
   </div>

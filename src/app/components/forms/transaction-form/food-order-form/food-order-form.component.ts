@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormGroupTyped } from '../../../../../TypedForms'
-import { FoodOrderForm } from '../../../../types/TransactionForm'
+import { FormArray, FormGroupTyped } from '../../../../../TypedForms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FoodOrder } from '../../../../../types/transaction.service.type'
 
 @Component({
   selector: 'plutus-food-order-form',
@@ -8,9 +9,13 @@ import { FoodOrderForm } from '../../../../types/TransactionForm'
   styleUrls: ['./food-order-form.component.scss'],
 })
 export class FoodOrderFormComponent implements OnInit {
-  @Input() parent!: FormGroupTyped<FoodOrderForm>
+  @Input() parent!: FormGroupTyped<FoodOrder>
   @Output() back = new EventEmitter<void>()
-  @Output() save = new EventEmitter<FoodOrderForm>()
+  @Output() save = new EventEmitter<FoodOrder>()
+
+  get dishes() {
+    return (this.parent.controls['dishes'] as FormArray).controls as FormGroup[]
+  }
 
   constructor() {}
 
@@ -22,5 +27,27 @@ export class FoodOrderFormComponent implements OnInit {
 
   onSubmit() {
     this.save.emit(this.parent.value)
+  }
+
+  addDish() {
+    const fb = new FormBuilder()
+    ;(this.parent.get('dishes') as FormArray).push(
+      fb.group({
+        name: ['', Validators.required],
+        rating: [0, Validators.compose([Validators.min(1), Validators.max(5), Validators.required])],
+      })
+    )
+  }
+
+  removeDish(idx: number) {
+    ;(this.parent.get('dishes') as FormArray).controls = this.dishes.filter((_, i) => i != idx)
+  }
+
+  isValid() {
+    return this.parent.valid && this.dishes.every((d) => d.valid)
+  }
+
+  dishesValid() {
+    return this.dishes.every((d) => d.valid)
   }
 }

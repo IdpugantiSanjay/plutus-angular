@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { CategoryService } from '../../../services/category.service'
 import { FormGroupTyped } from '../../../../TypedForms'
-import { Bill } from '../types/bill'
+import { Bill } from '../../../../types/bill.service.type'
 
 @Component({
   selector: 'plutus-bill-form',

@@ -34,6 +34,9 @@ export const TRANSACTIONS_URL_TOKEN = new InjectionToken<string>('Transactions A
 export const BUDGETS_URL_TOKEN = new InjectionToken<string>('Budgets API Token')
 export const USERS_URL_TOKEN = new InjectionToken<string>('Users API Token')
 export const USERNAME_TOKEN = new InjectionToken<BehaviorSubject<string>>('User Info Token')
+export const RECURRING_TRANSACTIONS_URL_TOKEN = new InjectionToken<BehaviorSubject<string>>(
+  'Recurring Transactions API TOKEN'
+)
 
 @NgModule({
   declarations: [
@@ -62,8 +65,8 @@ export const USERNAME_TOKEN = new InjectionToken<BehaviorSubject<string>>('User 
   bootstrap: [AppComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    { provide: API_BASE_URL_TOKEN, useFactory: () => (environment.production ? '/api' : 'https://localhost:7020/api') },
-    { provide: USERNAME_TOKEN, useValue: new BehaviorSubject<string>('sanjay') },
+    { provide: API_BASE_URL_TOKEN, useFactory: () => (environment.production ? '/api' : 'https://localhost:7020/api') }, // http://localhost:5088
+    { provide: USERNAME_TOKEN, useValue: new BehaviorSubject<string>('') },
     {
       provide: BUDGETS_URL_TOKEN,
       useFactory: (baseUrl: string, username: BehaviorSubject<string>) => {
@@ -75,6 +78,13 @@ export const USERNAME_TOKEN = new InjectionToken<BehaviorSubject<string>>('User 
       provide: TRANSACTIONS_URL_TOKEN,
       useFactory: (baseUrl: string, username: BehaviorSubject<string>) => {
         return `${baseUrl}/users/${username.value}/transactions`
+      },
+      deps: [API_BASE_URL_TOKEN, USERNAME_TOKEN],
+    },
+    {
+      provide: RECURRING_TRANSACTIONS_URL_TOKEN,
+      useFactory: (baseUrl: string, username: BehaviorSubject<string>) => {
+        return `${baseUrl}/users/${username.value}/recurringTransactions`
       },
       deps: [API_BASE_URL_TOKEN, USERNAME_TOKEN],
     },

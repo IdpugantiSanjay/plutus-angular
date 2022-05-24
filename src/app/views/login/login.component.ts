@@ -15,13 +15,21 @@ import { Router } from '@angular/router'
 export class LoginComponent implements OnInit {
   form: FormGroupTyped<LoginForm>
 
-  constructor(title: Title, private auth: AuthService, private fb: FormBuilder, private router: Router) {
+  constructor(
+    title: Title,
+    private auth: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     title.setTitle('Login')
 
     this.form = fb.group({
       username: [''],
       password: [''],
     }) as FormGroupTyped<LoginForm>
+
+    this.authService.ClearAuthentication()
   }
 
   ngOnInit(): void {}

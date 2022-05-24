@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Inject, OnInit } from '@angular/core'
 import { FormGroupTyped } from '../../../TypedForms'
-import { Bill, MONTHLY } from './types/bill'
 import { FormBuilder, Validators } from '@angular/forms'
+import { Bill, MONTHLY, RepeatFrequency } from '../../../types/bill.service.type'
+import { BillService } from './services/bill.service'
+import { USERNAME_TOKEN } from '../../app.module'
+import { BehaviorSubject } from 'rxjs'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'plutus-create-bill-view',
@@ -11,7 +15,12 @@ import { FormBuilder, Validators } from '@angular/forms'
 export class CreateBillViewComponent implements OnInit {
   form: FormGroupTyped<Bill>
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: BillService,
+    @Inject(USERNAME_TOKEN) private username: BehaviorSubject<string>,
+    private router: Router
+  ) {
     this.form = formBuilder.group({
       dueDate: [new Date().toISOString().substr(0, 10), Validators.required],
       autoMarkAsPaid: [false],
@@ -25,6 +34,9 @@ export class CreateBillViewComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(bill: Bill) {
-    console.log(bill)
+    bill.repeat = Number(bill.repeat) as RepeatFrequency
+    this.service.CreateBill({ ...bill, username: this.username.getValue() }).subscribe(() => {
+      this.router.navigateByUrl('/list')
+    })
   }
 }
