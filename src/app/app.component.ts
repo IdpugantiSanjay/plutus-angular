@@ -14,7 +14,7 @@ export class AppComponent {
     return Boolean(this.auth.GetAuthenticationInfo().bearerToken)
   }
 
-  isActive(route: string[]): boolean {
-    return this.router.isActive(this.router.createUrlTree(route), true);
+  isActive(route: string): boolean {
+    return this.router.isActive(this.router.createUrlTree([route]), true);
   }
 }

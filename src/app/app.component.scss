@@ -1,3 +1,7 @@
 .app-title {
   font-family: 'Koulen', cursive;
 }
+
+.nav-item {
+  @apply inline-flex items-center px-1 pt-1 text-sm font-medium hover:border-gray-300 hover:text-gray-700
+}

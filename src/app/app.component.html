@@ -10,24 +10,29 @@
           <!-- Current: "border-teal-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
           <a
             href="#"
-            class="text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium"
+            class="nav-item"
             routerLink="list"
-            routerLinkActive="border-b-2 border-teal-500">
+            routerLinkActive="border-b-2 border-teal-500 "
+            [ngClass]="isActive('list') ? 'text-gray-900' : 'text-gray-500'"
+          >
             Overview
           </a>
           <a
             href="#"
-            class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium"
+            class="nav-item"
             routerLink="new"
-            routerLinkActive="border-b-2 border-teal-500"
+            routerLinkActive="border-b-2 border-teal-500 text-gray-900"
+            [ngClass]="isActive('new') ? 'text-gray-900' : 'text-gray-500'"
           >
             Transactions
           </a>
           <a
             href="#"
-            class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium"
+            class="nav-item"
             routerLink="bills/new"
-            routerLinkActive="border-b-2 border-teal-500">
+            routerLinkActive="border-b-2 border-teal-500 text-gray-900"
+            [ngClass]="isActive('bills/new') ? 'text-gray-900' : 'text-gray-500'"
+          >
             Bills / Subscriptions
           </a>
         </div>
