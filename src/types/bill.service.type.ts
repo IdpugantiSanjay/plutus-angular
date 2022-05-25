@@ -1,6 +1,6 @@
 import type { Create, List } from './common'
 import { EntityMap } from './entities'
-import { ListRequestProps, ListResponseProps} from './common'
+import { ListRequestProps, ListResponseProps } from './common'
 import { Observable } from 'rxjs'
 
 export const ONE_TIME = 1

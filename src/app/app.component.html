@@ -13,8 +13,7 @@
             class="nav-item"
             routerLink="list"
             routerLinkActive="border-b-2 border-teal-500 "
-            [ngClass]="isActive('list') ? 'text-gray-900' : 'text-gray-500'"
-          >
+            [ngClass]="isActive('list') ? 'text-gray-900' : 'text-gray-500'">
             Overview
           </a>
           <a
@@ -22,8 +21,7 @@
             class="nav-item"
             routerLink="new"
             routerLinkActive="border-b-2 border-teal-500 text-gray-900"
-            [ngClass]="isActive('new') ? 'text-gray-900' : 'text-gray-500'"
-          >
+            [ngClass]="isActive('new') ? 'text-gray-900' : 'text-gray-500'">
             Transactions
           </a>
           <a
@@ -31,8 +29,7 @@
             class="nav-item"
             routerLink="bills/new"
             routerLinkActive="border-b-2 border-teal-500 text-gray-900"
-            [ngClass]="isActive('bills/new') ? 'text-gray-900' : 'text-gray-500'"
-          >
+            [ngClass]="isActive('bills/new') ? 'text-gray-900' : 'text-gray-500'">
             Bills / Subscriptions
           </a>
         </div>
@@ -48,26 +45,26 @@
         class="border-teal-500 text-teal-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
         routerLink="list"
         routerLinkActive="border-teal-500"
-      >Overview</a
+        >Overview</a
       >
       <a
         href="#"
         class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
         routerLink="new"
         routerLinkActive="border-teal-500"
-      >Transactions</a
+        >Transactions</a
       >
       <a
         href="#"
         class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
         routerLink="bills/new"
         routerLinkActive="border-teal-500"
-      >Bills / Subscriptions</a
+        >Bills / Subscriptions</a
       >
     </div>
   </div>
 </nav>
 
 <div class="pb-16">
-  <router-outlet></router-outlet>
+  <router-outlet #outlet></router-outlet>
 </div>

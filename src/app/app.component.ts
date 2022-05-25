@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { AuthService } from './views/login/services/auth.service'
-import {Router} from "@angular/router";
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,10 @@ export class AppComponent {
   }
 
   isActive(route: string): boolean {
-    return this.router.isActive(this.router.createUrlTree([route]), true);
+    return this.router.isActive(this.router.createUrlTree([route]), true)
+  }
+
+  getAnimation(outlet: HTMLElement) {
+
   }
 }

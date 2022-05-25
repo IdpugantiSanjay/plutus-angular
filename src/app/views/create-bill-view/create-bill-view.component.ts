@@ -6,11 +6,15 @@ import { BillService } from './services/bill.service'
 import { USERNAME_TOKEN } from '../../app.module'
 import { BehaviorSubject } from 'rxjs'
 import { Router } from '@angular/router'
+import {scaleIn} from "../../animations/scaleIn";
 
 @Component({
   selector: 'plutus-create-bill-view',
   templateUrl: './create-bill-view.component.html',
   styleUrls: ['./create-bill-view.component.scss'],
+  animations: [
+    scaleIn
+  ]
 })
 export class CreateBillViewComponent implements OnInit {
   form: FormGroupTyped<Bill>

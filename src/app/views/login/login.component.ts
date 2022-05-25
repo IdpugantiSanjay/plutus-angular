@@ -6,11 +6,15 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { FormBuilder } from '@angular/forms'
 import { FormGroupTyped } from '../../../TypedForms'
 import { Router } from '@angular/router'
+import {scaleIn} from "../../animations/scaleIn";
 
 @Component({
   selector: 'plutus-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  animations: [
+    scaleIn
+  ]
 })
 export class LoginComponent implements OnInit {
   form: FormGroupTyped<LoginForm>

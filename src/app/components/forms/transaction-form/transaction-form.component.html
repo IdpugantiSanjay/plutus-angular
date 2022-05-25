@@ -1,21 +1,27 @@
 <div>
-  <div class="bg-white py-8 px-6 shadow rounded-lg">
-    <plutus-transaction-common-props-form
-      [parent]="parent"
-      *ngIf="show === 'COMMON'"
-      (onSubmit)="save($event)"
-      (next)="showFoodForm()"
-      class="animate-fade-in">
-    </plutus-transaction-common-props-form>
+  <div>
 
-    <ng-container *ngIf="show === 'FOOD'">
-      <plutus-food-order-form
-        [parent]="foodOrderForm"
-        (back)="showCommonForm()"
-        (save)="foodOrderSubmit($event)"
+    <div *ngIf="show === 'COMMON'" class="bg-white py-8 px-6 shadow rounded-lg" [@scaleIn]>
+      <plutus-transaction-common-props-form
+        [parent]="parent"
+        (onSubmit)="save($event)"
+        (next)="showFoodForm()"
         class="animate-fade-in">
-      </plutus-food-order-form>
-    </ng-container>
+      </plutus-transaction-common-props-form>
+    </div>
+
+
+    <div class="bg-white py-8 px-6 shadow rounded-lg" [@scaleIn] *ngIf="show === 'FOOD'">
+      <ng-container>
+        <plutus-food-order-form
+          [parent]="foodOrderForm"
+          (back)="showCommonForm()"
+          (save)="foodOrderSubmit($event)"
+        >
+        </plutus-food-order-form>
+      </ng-container>
+    </div>
+
   </div>
 </div>
 

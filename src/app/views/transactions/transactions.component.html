@@ -1,5 +1,5 @@
 <div *ngIf="transactions$" class="px-[4%] main">
-  <div class="container m-auto rounded-md bg-white shadow-md mt-8 animate-fade-in">
+  <div class="container m-auto rounded-md bg-white shadow-md mt-8" [@scaleIn]>
     <div class="flex justify-between content-center p-4">
       <div class="font-medium cursor-pointer" routerLink="/new">Recent transactions</div>
       <div>
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="container m-auto rounded-md bg-white shadow-md mt-8 animate-fade-in" *ngIf="(bills$ | async)?.length">
+  <div class="container m-auto rounded-md bg-white shadow-md mt-8" *ngIf="(bills$ | async)?.length" [@scaleIn]>
     <div class="flex justify-between content-center p-4">
       <div class="font-medium cursor-pointer" routerLink="/bills/new">Bills and subscriptions</div>
       <div class="text-teal-500">

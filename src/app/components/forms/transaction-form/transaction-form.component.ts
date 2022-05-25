@@ -4,12 +4,19 @@ import { FormGroupTyped } from '../../../../TypedForms'
 import { TransactionForm } from '../../../types/TransactionForm'
 import { Subject } from 'rxjs'
 import { FoodOrder } from '../../../../types/transaction.service.type'
+import {scaleIn} from "../../../animations/scaleIn";
+import {transition, trigger, useAnimation} from "@angular/animations";
+import {bounce} from "ng-animate";
+
+
 
 @Component({
   selector: 'plutus-transaction-form',
   templateUrl: './transaction-form.component.html',
   styleUrls: ['./transaction-form.component.scss'],
-  animations: [],
+  animations: [
+    scaleIn,
+  ],
 })
 export class TransactionFormComponent implements OnInit, OnDestroy {
   @Input() parent!: FormGroupTyped<TransactionForm>

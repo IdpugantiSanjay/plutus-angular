@@ -20,6 +20,7 @@ module.exports = {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'fade-out': 'fadeOut 0.5s ease-in-out',
         wiggle: 'wiggle .2s ease-in-out',
+        'scale-in': 'scaleIn 1s ease-in-out'
       },
       keyframes: {
         fadeIn: {
@@ -34,6 +35,11 @@ module.exports = {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
         },
+        scaleIn: {
+          "0%": { transform: "scale(0)" },
+          "50%": { transform: "scale(0.5)" },
+          "100%": { transform: "scale(1)" },
+        }
       },
     },
   },

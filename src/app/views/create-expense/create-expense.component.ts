@@ -5,12 +5,16 @@ import { FormBuilder, FormControl } from '@angular/forms'
 import { TransactionService } from '../../services/transaction.service'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
+import {scaleIn} from "../../animations/scaleIn";
 
 @Component({
   selector: 'plutus-create-expense',
   templateUrl: './create-expense.component.html',
   styleUrls: ['./create-expense.component.scss'],
   providers: [],
+  animations: [
+    scaleIn
+  ]
 })
 export class CreateExpenseComponent implements OnInit {
   form!: FormGroupTyped<TransactionForm>
