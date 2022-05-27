@@ -1,12 +1,14 @@
-import { Attribute, Component, forwardRef, Input, OnInit } from '@angular/core'
+import { Attribute, Component, forwardRef, Input } from '@angular/core'
 import { RatingProps } from './types'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { range } from '../../functions/range'
+import { rotate3Animation } from '../../animations/rotate3'
 
 @Component({
   selector: 'plutus-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss'],
+  animations: [rotate3Animation],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -15,7 +17,7 @@ import { range } from '../../functions/range'
     },
   ],
 })
-export class RatingComponent implements OnInit, ControlValueAccessor {
+export class RatingComponent implements ControlValueAccessor {
   @Input('props')
   set props(value: RatingProps) {
     this._props = value
@@ -37,7 +39,7 @@ export class RatingComponent implements OnInit, ControlValueAccessor {
     this.onChange = fn
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(): void {}
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled
@@ -50,14 +52,23 @@ export class RatingComponent implements OnInit, ControlValueAccessor {
 
   constructor(@Attribute('disabled') public disabled: boolean) {}
 
-  ngOnInit(): void {}
-
   rate(rating: number) {
-    if (this.rating == rating) {
-      this.rating = 0
-    } else {
-      this.rating = rating
+    this.rating = this.rating == rating ? 0 : rating
+    this.onChange(this.rating)
+    this.rotate(this.rating)
+  }
+
+  public rotateState: Array<'default' | 'rotate'> = Array(5).map((_) => 'default')
+
+  resetAnimationState() {
+    for (const index of range(0, this.rotateState.length)) {
+      this.rotateState[index] = 'default'
     }
-    this.onChange(rating)
+  }
+
+  rotate(upto: number) {
+    for (const index of range(0, upto)) {
+      this.rotateState[index] = 'rotate'
+    }
   }
 }

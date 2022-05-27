@@ -5,6 +5,6 @@
   </h2>
 </div>
 
-<div class="mt-8 mx-auto sm:max-w-md max-w-sm plutus-transaction-form-wrapper" *ngIf="form" [@scaleIn]>
+<div class="mt-8 mx-auto sm:max-w-md max-w-sm plutus-transaction-form-wrapper" *ngIf="form" @scale>
   <plutus-transaction-form (save)="submit($event)" [parent]="form"></plutus-transaction-form>
 </div>

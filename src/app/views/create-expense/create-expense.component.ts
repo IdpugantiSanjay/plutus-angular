@@ -5,7 +5,7 @@ import { FormBuilder, FormControl } from '@angular/forms'
 import { TransactionService } from '../../services/transaction.service'
 import { Title } from '@angular/platform-browser'
 import { Router } from '@angular/router'
-import {scaleIn} from "../../animations/scaleIn";
+import {scale} from "../../animations/scale";
 
 @Component({
   selector: 'plutus-create-expense',
@@ -13,7 +13,7 @@ import {scaleIn} from "../../animations/scaleIn";
   styleUrls: ['./create-expense.component.scss'],
   providers: [],
   animations: [
-    scaleIn
+    scale
   ]
 })
 export class CreateExpenseComponent implements OnInit {

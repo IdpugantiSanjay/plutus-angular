@@ -2,11 +2,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormGroupTyped } from '../../../../../TypedForms'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { FoodOrder } from '../../../../../types/transaction.service.type'
+import {scale} from "../../../../animations/scale";
+import {fadeAnimation} from "../../../../animations/fade";
 
 @Component({
   selector: 'plutus-food-order-form',
   templateUrl: './food-order-form.component.html',
   styleUrls: ['./food-order-form.component.scss'],
+  animations: [
+    scale,
+    fadeAnimation
+  ]
 })
 export class FoodOrderFormComponent implements OnInit {
   @Input() parent!: FormGroupTyped<FoodOrder>

@@ -4,9 +4,8 @@ import { FormGroupTyped } from '../../../../TypedForms'
 import { TransactionForm } from '../../../types/TransactionForm'
 import { Subject } from 'rxjs'
 import { FoodOrder } from '../../../../types/transaction.service.type'
-import {scaleIn} from "../../../animations/scaleIn";
+import {scale} from "../../../animations/scale";
 import {transition, trigger, useAnimation} from "@angular/animations";
-import {bounce} from "ng-animate";
 
 
 
@@ -15,7 +14,7 @@ import {bounce} from "ng-animate";
   templateUrl: './transaction-form.component.html',
   styleUrls: ['./transaction-form.component.scss'],
   animations: [
-    scaleIn,
+    scale,
   ],
 })
 export class TransactionFormComponent implements OnInit, OnDestroy {

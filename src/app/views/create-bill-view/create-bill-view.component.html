@@ -5,6 +5,6 @@
   </h2>
 </div>
 
-<div class="mt-12 m-auto plutus-bill-form-wrapper" *ngIf="form" [@scaleIn]>
+<div class="mt-12 m-auto plutus-bill-form-wrapper" *ngIf="form" @scale>
   <plutus-bill-form [parent]="form" (submit)="onSubmit($event)"></plutus-bill-form>
 </div>

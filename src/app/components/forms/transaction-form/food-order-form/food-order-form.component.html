@@ -46,8 +46,8 @@
             </div>
 
             <ng-container formArrayName="dishes">
-              <div class="flex gap-4" *ngFor="let dish of dishes; let idx = index">
-                <div class="flex-1 animate-fade-in" [formGroup]="dish">
+              <div class="flex gap-4" *ngFor="let dish of dishes; let idx = index" @fade>
+                <div class="flex-1" [formGroup]="dish" >
                   <div class="flex justify-between items-center">
                     <label for="dish"> Dish </label>
                     <span
@@ -60,7 +60,7 @@
                     <input id="dish" name="dish" type="text" required formControlName="name" />
                   </div>
                 </div>
-                <div class="self-center justify-self-center text-pink-500" *ngIf="dishes.length > 1">
+                <div class="self-center justify-self-center text-pink-500" *ngIf="dishes.length" @scale>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6 cursor-pointer"
@@ -81,7 +81,7 @@
             <div class="flex justify-center">
               <button
                 (click)="addDish()"
-                class="disabled:opacity-40 disabled:cursor-not-allowed flex text-teal-800 items-center gap-2 background-transparent font-bold uppercase px-3 py-1 text-xs outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                class="disabled:opacity-40 disabled:cursor-not-allowed flex text-teal-800 items-center gap-2 background-transparent font-bold uppercase px-3 py-1 text-xs focus:outline-none focus:ring-teal-500 mr-1 mb-1"
                 type="button"
                 [disabled]="!dishesValid()">
                 <span>

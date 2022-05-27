@@ -1,6 +1,8 @@
 <div class="flex" *ngIf="count.length">
-  <div *ngFor="let star of count">
+  <div *ngFor="let star of count; let i = index">
     <svg
+      [@rotate3]="rotateState[i]"
+      (@rotate3.done)="resetAnimationState()"
       tabindex="0"
       data-test-star="i"
       (click)="rate(star)"
