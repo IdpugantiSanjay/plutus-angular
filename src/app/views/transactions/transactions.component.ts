@@ -6,15 +6,14 @@ import { Title } from '@angular/platform-browser'
 import { BillService } from '../create-bill-view/services/bill.service'
 import { ListBillsResponse } from '../../../types/bill.service.type'
 import { CategoryService } from '../../services/category.service'
-import {animate, style, transition, trigger} from "@angular/animations";
-import {scale} from "../../animations/scale";
+import {listAnimation} from "../../animations/list";
 
 @Component({
   selector: 'plutus-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss'],
   animations: [
-    scale
+    listAnimation
   ]
 })
 export class TransactionsComponent implements OnInit {

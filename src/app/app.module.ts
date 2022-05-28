@@ -27,7 +27,8 @@ import { MedicineIconComponent } from './components/icons/medicine-icon.componen
 import { BudgetsViewComponent } from './views/budgets-view/budgets-view.component'
 import { BudgetComponent } from './views/budgets-view/budget/budget.component'
 import { CreateBillViewComponent } from './views/create-bill-view/create-bill-view.component'
-import { BillFormComponent } from './views/create-bill-view/bill-form/bill-form.component'
+import { BillFormComponent } from './views/create-bill-view/bill-form/bill-form.component';
+import { TransactionsViewComponent } from './views/transactions-view/transactions-view.component'
 
 const API_BASE_URL_TOKEN = new InjectionToken<string>('Base API TOKEN')
 export const TRANSACTIONS_URL_TOKEN = new InjectionToken<string>('Transactions API Token')
@@ -60,6 +61,7 @@ export const RECURRING_TRANSACTIONS_URL_TOKEN = new InjectionToken<BehaviorSubje
     BudgetComponent,
     CreateBillViewComponent,
     BillFormComponent,
+    TransactionsViewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule],
   bootstrap: [AppComponent],

@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           }
         },
         next: () => {
-          this.router.navigateByUrl('/new')
+          this.router.navigateByUrl('/transactions/new')
         },
       })
   }

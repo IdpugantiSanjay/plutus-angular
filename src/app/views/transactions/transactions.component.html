@@ -7,10 +7,10 @@
       </div>
     </div>
 
-    <div class="transaction" *ngFor="let transaction of transactions$ | async; index as i">
+    <div class="transaction" *ngFor="let transaction of transactions$ | async; index as i" @list>
       <div class="separator" *ngIf="i != 0"></div>
 
-      <div class="flex p-5 relative">
+      <div class="flex p-5 relative item">
         <div class="self-center justify-self-center mr-2">
           <div class="bg-teal-100 rounded-full p-2 text-teal-700">
             <div [ngSwitch]="transaction.category">
@@ -24,7 +24,7 @@
 
         <div class="flex-1 ml-2 min-w-0">
           <div
-            class="text-base font-bold mb-2 truncate"
+            class="text-base font-medium mb-2 truncate"
             [textContent]="cardTitle(transaction)"
             [title]="cardTitle(transaction)"></div>
           <div class="text-sm opacity-60">
@@ -62,10 +62,9 @@
     </div>
 
     <div class="text-3xl font-bold pl-4 py-2">{{ totalBillsDue$ | async | currency: 'INR' }}</div>
-
-    <div *ngFor="let bill of bills$ | async; let i = index">
+    <div *ngFor="let bill of bills$ | async; let i = index" @list>
       <div class="separator" *ngIf="i != 0"></div>
-      <div class="flex items-center p-4">
+      <div class="flex items-center p-4 item">
         <div class="min-w-min text-sm opacity-60 flex flex-col items-center justify-center basis-12">
           <div>{{ bill.dueDate | date: 'MMM' }}</div>
           <div>{{ bill.dueDate | date: 'd' }}</div>

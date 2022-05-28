@@ -41,7 +41,7 @@ export class CreateExpenseComponent implements OnInit {
     console.log(form)
     this.service.CreateTransaction({ ...form, username: 'sanjay', type: 'expense' }).subscribe({
       next: () => {
-        this.router.navigateByUrl('/list')
+        this.router.navigateByUrl('/transactions/list')
       },
     })
   }

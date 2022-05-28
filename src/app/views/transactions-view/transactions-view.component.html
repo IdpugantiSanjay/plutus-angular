@@ -1,0 +1,29 @@
+<div class="w-full shadow  mt-8 bg-white p-2 px-4">
+  <ng-container *ngIf="(transactions$ | async) as trxs">
+    <div *ngFor="let trx of trxs; let i = index">
+      <div class="items-center flex gap-3">
+        <div class="flex flex-col basis-8">
+          <div class="text-xs opacity-60">
+            {{ trx.dateTime | date: 'MMM' }}
+          </div>
+          <div class="opacity-60">
+            {{ trx.dateTime | date: 'dd' }}
+          </div>
+        </div>
+        <div class="flex flex-col flex-1 min-w-0">
+          <div class="truncate">
+            {{ trx.foodOrder?.restaurant || trx.description }}
+          </div>
+          <div class="text-xs opacity-60">
+            {{ trx.category }}
+          </div>
+        </div>
+        <div class="text-xl shrink-0" [class.text-emerald-700]="isIncome(trx)">
+          {{ isIncome(trx) ? '': '-' }}{{ trx.amount | currency: 'INR' }}
+        </div>
+      </div>
+
+      <div class="separator mb-2 mt-2" *ngIf="i != trxs.length - 1"></div>
+    </div>
+  </ng-container>
+</div>

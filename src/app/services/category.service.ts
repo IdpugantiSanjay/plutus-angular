@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Categories, ExpenseCategories } from '../../types/category'
 
-// type MainCategories = 'Income' | 'Entertainment' | 'Education' | 'Investments' | 'Shopping'
 
 @Injectable({
   providedIn: 'root',
