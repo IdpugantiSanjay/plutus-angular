@@ -4,7 +4,7 @@ import { TransactionCommonPropsFormComponent } from './transaction-common-props-
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
 import { FormGroupTyped } from '../../../../../TypedForms'
 import { TransactionForm } from '../../../../types/TransactionForm'
-import { ButtonDirective } from '../../../../directories/button.directive'
+import { ButtonDirective } from '../../../../directive/button.directive'
 
 describe('TransactionCommonPropsFormComponent', () => {
   let component: TransactionCommonPropsFormComponent

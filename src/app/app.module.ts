@@ -14,7 +14,7 @@ import { BehaviorSubject } from 'rxjs'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FoodOrderFormComponent } from './components/forms/transaction-form/food-order-form/food-order-form.component'
 import { TransactionCommonPropsFormComponent } from './components/forms/transaction-form/transaction-common-props-form/transaction-common-props-form.component'
-import { ButtonDirective } from './directories/button.directive'
+import { ButtonDirective } from './directive/button.directive'
 import { CreateExpenseComponent } from './views/create-expense/create-expense.component'
 import { LoginComponent } from './views/login/login.component'
 import { MessageDialogComponent } from './components/message-dialog/message-dialog.component'
@@ -29,6 +29,9 @@ import { BudgetComponent } from './views/budgets-view/budget/budget.component'
 import { CreateBillViewComponent } from './views/create-bill-view/create-bill-view.component'
 import { BillFormComponent } from './views/create-bill-view/bill-form/bill-form.component';
 import { TransactionsViewComponent } from './views/transactions-view/transactions-view.component'
+import {DatePipe} from "@angular/common";
+import { LongPressDirective } from './directive/long-press.directive';
+import { ClickedOutsideDirective } from './directive/clicked-outside.directive';
 
 const API_BASE_URL_TOKEN = new InjectionToken<string>('Base API TOKEN')
 export const TRANSACTIONS_URL_TOKEN = new InjectionToken<string>('Transactions API Token')
@@ -62,10 +65,13 @@ export const RECURRING_TRANSACTIONS_URL_TOKEN = new InjectionToken<BehaviorSubje
     CreateBillViewComponent,
     BillFormComponent,
     TransactionsViewComponent,
+    LongPressDirective,
+    ClickedOutsideDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule],
   bootstrap: [AppComponent],
   providers: [
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: API_BASE_URL_TOKEN, useFactory: () => (environment.production ? '/api' : 'https://localhost:7020/api') }, // http://localhost:5088
     { provide: USERNAME_TOKEN, useValue: new BehaviorSubject<string>('') },

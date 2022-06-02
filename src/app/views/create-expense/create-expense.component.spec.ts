@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { CreateExpenseComponent } from './create-expense.component'
-import { ButtonDirective } from '../../directories/button.directive'
+import { ButtonDirective } from '../../directive/button.directive'
 import { TransactionFormComponent } from '../../components/forms/transaction-form/transaction-form.component'
 import { TransactionCommonPropsFormComponent } from '../../components/forms/transaction-form/transaction-common-props-form/transaction-common-props-form.component'
 import { RatingComponent } from '../../components/rating/rating.component'

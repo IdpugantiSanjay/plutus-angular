@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
 import { By } from '@angular/platform-browser'
 import { TransactionCommonPropsFormComponent } from './transaction-common-props-form/transaction-common-props-form.component'
 import { RatingComponent } from '../../rating/rating.component'
-import { ButtonDirective } from '../../../directories/button.directive'
+import { ButtonDirective } from '../../../directive/button.directive'
 
 describe('TransactionFormComponent', () => {
   let component: TransactionFormComponent
