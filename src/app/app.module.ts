@@ -32,6 +32,9 @@ import { TransactionsViewComponent } from './views/transactions-view/transaction
 import {DatePipe} from "@angular/common";
 import { LongPressDirective } from './directive/long-press.directive';
 import { ClickedOutsideDirective } from './directive/clicked-outside.directive';
+import { FadeInAnimationDirective } from './gsap/fade-in-animation.directive';
+import { CoreAnimationDirective } from './gsap/core-animation.directive';
+import {SalaryIconComponent} from "./components/icons/salary-icon";
 
 const API_BASE_URL_TOKEN = new InjectionToken<string>('Base API TOKEN')
 export const TRANSACTIONS_URL_TOKEN = new InjectionToken<string>('Transactions API Token')
@@ -60,6 +63,7 @@ export const RECURRING_TRANSACTIONS_URL_TOKEN = new InjectionToken<BehaviorSubje
     FoodOrderIconComponent,
     EntertainmentIconComponent,
     MedicineIconComponent,
+    SalaryIconComponent,
     BudgetsViewComponent,
     BudgetComponent,
     CreateBillViewComponent,
@@ -67,6 +71,8 @@ export const RECURRING_TRANSACTIONS_URL_TOKEN = new InjectionToken<BehaviorSubje
     TransactionsViewComponent,
     LongPressDirective,
     ClickedOutsideDirective,
+    FadeInAnimationDirective,
+    CoreAnimationDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule],
   bootstrap: [AppComponent],

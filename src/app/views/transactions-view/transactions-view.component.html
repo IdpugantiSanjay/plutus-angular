@@ -1,10 +1,10 @@
-<div>
-  <div *ngFor="let group of (groupedTransactions$ | async)">
+<div class="overflow-hidden" (clickedOutside)="clickedOutside()">
+  <div *ngFor="let group of (groupedTransactions$ | async)" >
     <div class="flex justify-center mt-8"><span class="text-sm opacity-60 "> {{ group[0] }} </span></div>
-    <div class="w-full shadow  bg-white mt-2 p-2 px-4">
-      <ng-container *ngFor="let trx of group[1]; let idx = index">
+    <div class="w-full shadow  bg-white mt-2 p-2 px-4" [@list]="group[1].length">
+      <div *ngFor="let trx of group[1]; let idx = index">
         <div class="relative" (click)="cardClick(trx.id)" [attr.data-id]="trx.id">
-          <div class="deleteButton text-pink-500 border-2 p-1 bg-gray-200" (click)="deleteTransaction(trx, group[1])">
+          <div class="deleteButton text-pink-500 border-2 p-1 bg-gray-200" (click)="deleteTransaction(trx)">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                  stroke-width="2">
               <title> Delete Transaction </title>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="separator mb-2 mt-2" *ngIf="idx != group[1].length - 1"></div>
-      </ng-container>
+      </div>
     </div>
   </div>
 

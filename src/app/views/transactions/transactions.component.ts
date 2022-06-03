@@ -7,6 +7,7 @@ import { BillService } from '../create-bill-view/services/bill.service'
 import { ListBillsResponse } from '../../../types/bill.service.type'
 import { CategoryService } from '../../services/category.service'
 import {listAnimation} from "../../animations/list";
+import {Categories} from "../../../types/category";
 
 @Component({
   selector: 'plutus-transactions',
@@ -65,5 +66,9 @@ export class TransactionsComponent implements OnInit {
           .pipe(map((b) => b.entities))
       )
     )
+  }
+
+  isIncome(category: string) {
+    return Categories.Income.includes(category as any)
   }
 }
