@@ -3,10 +3,14 @@ import { Title } from '@angular/platform-browser'
 import { LoginForm } from '../../types/LoginForm'
 import { AuthService } from './services/auth.service'
 import { HttpErrorResponse } from '@angular/common/http'
-import { FormBuilder } from '@angular/forms'
-import { FormGroupTyped } from '../../../TypedForms'
+import {FormBuilder, FormGroup, NonNullableFormBuilder} from '@angular/forms'
 import { Router } from '@angular/router'
 import {scale} from "../../animations/scale";
+import {FormGroupType} from "../../../ToFormGroup";
+
+
+type Vm = LoginForm
+type FormVm = FormGroupType<Vm>
 
 @Component({
   selector: 'plutus-login',
@@ -17,21 +21,21 @@ import {scale} from "../../animations/scale";
   ]
 })
 export class LoginComponent implements OnInit {
-  form: FormGroupTyped<LoginForm>
+  form: FormGroup<FormVm>
 
   constructor(
     title: Title,
     private auth: AuthService,
-    private fb: FormBuilder,
+    private fb: NonNullableFormBuilder,
     private router: Router,
     private authService: AuthService
   ) {
     title.setTitle('Login')
 
     this.form = fb.group({
-      username: [''],
-      password: [''],
-    }) as FormGroupTyped<LoginForm>
+      username: '',
+      password: '',
+    })
 
     this.authService.ClearAuthentication()
   }

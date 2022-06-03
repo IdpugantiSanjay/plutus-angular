@@ -14,19 +14,20 @@ import { EntityMap } from './entities'
 
 import { Categories, MainCategories } from './category'
 
+export type CategoryType = typeof Categories[typeof MainCategories[number]][number]
+
 export type Transaction = {
   amount: number
-  category: typeof Categories[typeof MainCategories[number]][number]
-  dateTime: Date
+  category: CategoryType
+  dateTime: string
   description: string
   id: string
-  type: 'income' | 'expense'
   username: string
   foodOrder?: FoodOrder
 }
 
 export type FoodOrder = {
-  dishes: Dishes
+  dishes: { name: string; rating: number }[]
   restaurant: string
 }
 

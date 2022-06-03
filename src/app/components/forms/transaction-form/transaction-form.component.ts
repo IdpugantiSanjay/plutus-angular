@@ -1,33 +1,41 @@
 import { Attribute, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core'
-import { FormBuilder } from '@angular/forms'
-import { FormGroupTyped } from '../../../../TypedForms'
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  UntypedFormGroup,
+} from '@angular/forms'
 import { TransactionForm } from '../../../types/TransactionForm'
 import { Subject } from 'rxjs'
-import { FoodOrder } from '../../../../types/transaction.service.type'
-import {scale} from "../../../animations/scale";
-import {transition, trigger, useAnimation} from "@angular/animations";
+import { Dishes, FoodOrder } from '../../../../types/transaction.service.type'
+import { scale } from '../../../animations/scale'
+import { transition, trigger, useAnimation } from '@angular/animations'
+import { FormGroupType } from '../../../../ToFormGroup'
 
+export type Vm = TransactionForm
 
+type FoodOrderForm = FormGroupType<FoodOrder>
+type FormGroupVM = FormGroupType<Vm>
 
 @Component({
   selector: 'plutus-transaction-form',
   templateUrl: './transaction-form.component.html',
   styleUrls: ['./transaction-form.component.scss'],
-  animations: [
-    scale,
-  ],
+  animations: [scale],
 })
 export class TransactionFormComponent implements OnInit, OnDestroy {
-  @Input() parent!: FormGroupTyped<TransactionForm>
-  @Output('save') saveEvent = new EventEmitter<TransactionForm>()
+  @Input() parent!: FormGroup<FormGroupVM>
+  @Output('save') saveEvent = new EventEmitter<Vm>()
 
   show: 'COMMON' | 'FOOD' = 'COMMON'
   private destroyed$ = new Subject<void>()
 
-  constructor(private fb: FormBuilder, @Attribute('disabled') public readonly disabled: boolean) {}
+  constructor(private fb: NonNullableFormBuilder, @Attribute('disabled') public readonly disabled: boolean) {}
 
-  get foodOrderForm(): FormGroupTyped<FoodOrder> {
-    return this.parent.get('foodOrder') as FormGroupTyped<FoodOrder>
+  get foodOrderForm(): FormGroup<FoodOrderForm> {
+    return this.createFoodOrderGroup()
   }
 
   ngOnDestroy(): void {
@@ -35,16 +43,22 @@ export class TransactionFormComponent implements OnInit, OnDestroy {
     this.destroyed$.complete()
   }
 
-  private createFoodOrderGroup(): FormGroupTyped<FoodOrder> {
-    return this.fb.group({
+  private createFoodOrderGroup(): FormGroup<FoodOrderForm> {
+    const form = this.fb.group({
       restaurant: '',
-      dishes: this.fb.array([]),
-    }) as FormGroupTyped<FoodOrder>
+      dishes: this.fb.array([
+        this.fb.group({
+          name: '',
+          rating: 0,
+        }),
+      ]),
+    })
+
+    return form as unknown as FormGroup<FoodOrderForm>
   }
 
   ngOnInit(): void {
-    const foodOrderForm = this.createFoodOrderGroup()
-    this.parent.addControl('foodOrder', foodOrderForm)
+    (this.parent as any).addControl('foodOrder', this.createFoodOrderGroup())
   }
 
   showCommonForm() {

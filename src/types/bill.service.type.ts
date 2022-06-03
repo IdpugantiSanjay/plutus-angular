@@ -13,7 +13,7 @@ export type RepeatFrequency = typeof ONE_TIME | typeof MONTHLY | typeof THREE_MO
 
 export type Bill = {
   id?: string
-  dueDate: Date
+  dueDate: string
   autoMarkAsPaid: boolean
   category: string
   biller: string

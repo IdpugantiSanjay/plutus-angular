@@ -46,7 +46,7 @@ export class TransactionsViewComponent implements OnInit {
     return Categories.Income.includes(transaction.category as any)
   }
 
-  month(d: Date): string {
+  month(d: string): string {
     return this.date.transform(d, 'MMMM')!.toUpperCase()
   }
 
